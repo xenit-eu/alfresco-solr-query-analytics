@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="search.solrQueryHTTPCLient" class="eu.xenit.subsystems.patches.solr.SolrQueryHTTPClient" init-method="init">
+        <property name="nodeService">
+            <ref bean="mlAwareNodeService" />
+        </property>
+        <property name="nodeDAO">
+            <ref bean="nodeDAO" />
+        </property>
+        <property name="dictionaryService" ref="dictionaryService"/>
+        <property name="namespaceDAO" ref="dictionaryDAO" />
+        <property name="alternativeDictionary" value="${solr.cmis.alternativeDictionary}" />
+        <property name="permissionService">
+            <ref bean="permissionService" />
+        </property>
+        <property name="tenantService">
+            <ref bean="tenantService" />
+        </property>
+        <property name="shardRegistry">
+            <ref bean="search.solrShardRegistry" />
+        </property>
+        <property name="repositoryState">
+            <ref bean="repositoryState" />
+        </property>
+        <property name="languageMappings">
+            <map>
+                <entry key="lucene" value="alfresco" />
+                <entry key="solr-alfresco" value="alfresco" />
+                <entry key="cmis-strict" value="cmis" />
+                <entry key="cmis-alfresco" value="cmis" />
+                <entry key="solr-cmis" value="cmis" />
+                <entry key="fts-alfresco" value="afts" />
+                <entry key="solr-fts-alfresco" value="afts" />
+            </map>
+        </property>
+        <property name="storeMappings">
+            <ref bean="solr6.store.mappings" />
+        </property>
+        <property name="includeGroupsForRoleAdmin">
+            <value>${solr.query.includeGroupsForRoleAdmin}</value>
+        </property>
+        <property name="maximumResultsFromUnlimitedQuery">
+            <value>${solr.query.maximumResultsFromUnlimitedQuery}</value>
+        </property>
+        <property name="anyDenyDenies" value="${security.anyDenyDenies}"/>
+        <property name="defaultUnshardedFacetLimit" value="${solr.defaultUnshardedFacetLimit}"/>
+        <property name="defaultShardedFacetLimit" value="${solr.defaultShardedFacetLimit}"/>
+        <property name="useDynamicShardRegistration" value="${solr.useDynamicShardRegistration}"/>
+        <property name="useSolrDebug" value="${solr.useDebug}"/>
+    </bean>
+
+</beans>

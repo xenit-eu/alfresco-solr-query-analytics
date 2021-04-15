@@ -1,0 +1,40 @@
+filebeat.modules:
+- module: json
+- module: json-alfresco
+
+name: localhost
+fields_under_root: true
+fields:
+  agent.ip: "127.0.0.1"
+
+filebeat.autodiscover:
+  providers:
+    - type: docker
+      hints.enabled: true
+      config:
+        type: container
+        paths:
+        - /var/lib/docker/containers/${container.id}/${container.id}-json.log*
+
+setup:
+  dashboards:
+    enabled: False
+  kibana:
+    host: "kibana"
+  
+
+output.elasticsearch:
+  hosts: ["172.17.0.1"]
+  username:  "elastic"
+  password: "changeme"
+  indices:
+   - index: "%{[docker.container.labels.eu_xenit_index]}"
+
+monitoring:
+  enabled: true
+  elasticsearch:
+    hosts: ["172.17.0.1"]	
+    username:  "elastic"
+    password: "changeme"  
+
+#logging.level: debug

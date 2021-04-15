@@ -1,0 +1,9 @@
+module_version: 1.0
+
+var:
+  - name: paths
+    default:
+      - /usr/local/tomcat/logs/catalina*
+
+ingest_pipeline: ingest/default.json
+input: config/log.yml

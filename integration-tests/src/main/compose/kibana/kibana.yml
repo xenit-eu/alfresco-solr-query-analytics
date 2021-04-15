@@ -1,0 +1,10 @@
+server.name: kibana
+server.host: "0.0.0.0"
+kibana.autocompleteTerminateAfter: 100000000
+kibana.autocompleteTimeout: 10000
+elasticsearch:
+  hosts: [ "http://elasticsearch:9200" ]
+  username: "elastic"
+  password: "changeme"
+elasticsearch.requestTimeout: 60000
+elasticsearch.shardTimeout: 60000

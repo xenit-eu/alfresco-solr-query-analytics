@@ -1,0 +1,20 @@
+{
+  "description": "Pipeline for parsing logs in json format",
+  "processors": [
+	  {
+        "json" : {
+          "field" : "message",
+	  "target_field": "json_message",
+          "on_failure" : [
+            {
+              "set" : {
+                "field" : "json_log_error",
+                "value" : "Log line is not in json format"
+              }
+            }
+          ]
+        }
+      }
+  ]
+}
+

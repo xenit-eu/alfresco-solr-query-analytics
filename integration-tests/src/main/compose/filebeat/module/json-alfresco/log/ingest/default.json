@@ -1,0 +1,40 @@
+{
+    "description": "Pipeline for parsing logs in json format",
+    "processors": [
+	{
+            "json" : {
+		"field" : "message",
+		"target_field": "json_message",
+		"on_failure" : [
+		    {
+			"set" : {
+			    "field" : "json_log_error",
+			    "value" : "Log line is not in json format"
+			}
+		    }
+		]
+	    }
+	},
+	{
+            "json" : {
+		"field" : "json_message.message",
+		"target_field": "json_message_solr_debug",
+		"on_failure" : [
+		    {
+			"set" : {
+			    "field" : "json_message_log_error",
+			    "value" : "Json message is not in json format"
+			}
+		    }
+		]
+	    }
+	},
+	{
+            "remove": {
+                "field": ["json_mesage"],
+                "ignore_missing": true
+            }
+	}
+    ]
+}
+

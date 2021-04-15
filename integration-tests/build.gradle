@@ -1,0 +1,47 @@
+plugins {
+    id 'eu.xenit.docker-alfresco' version '5.2.0' apply false
+    id 'eu.xenit.docker-compose' version '5.2.0' apply false    
+}
+
+subprojects {
+    def edition = project.name.split("-")[1]
+    apply from: "${project.projectDir}/overload.gradle"
+
+    description = "Alfresco ${alfrescoVersion} with solr debugging"
+
+    apply plugin: 'eu.xenit.docker-alfresco'
+    apply plugin: 'eu.xenit.docker-compose'    
+
+    ext {
+        alfredJsonLoggingVersion = '0.0.1'
+        deVersion = '2.0.5'
+        care4alfVersion = '2.3.0'
+    }
+
+    dependencies {
+//        alfrescoAmp "eu.xenit.alfred-json-logging:alfred-json-logging:${alfredJsonLoggingVersion}@amp"
+        alfrescoAmp "eu.xenit.alfresco:alfresco-hotfix-MNT-20557:1.0.2@amp"
+        alfrescoAmp "eu.xenit:alfresco-dynamic-extensions-repo-${alfrescoVersionShort}:${deVersion}@amp"
+        alfrescoAmp "eu.xenit.care4alf:care4alf-6x:${care4alfVersion}@amp"
+        alfrescoAmp project(path: ":alfresco-solr-debug", configuration: "amp")
+
+
+        baseAlfrescoWar "org.alfresco:${alfrescoArtifactId}:${alfrescoVersion}@war"
+    }
+
+    dockerBuild	{
+      alfresco {    
+        def namespace = (edition=="community"?"public":"alfresco-${edition}")
+        baseImage = "hub.xenit.eu/${namespace}/alfresco-${edition}:${alfrescoVersion}"
+        leanImage = true
+      }
+      repositories = ["hub.xenit.eu/private/alfresco-solr-debug"]
+      tags = ["${version}-alfresco-${alfrescoVersion}"]
+    }
+
+
+    dockerCompose {
+        dockerComposeWorkingDirectory = "${project.parent.projectDir}/src/main/compose/"
+    }
+
+}

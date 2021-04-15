@@ -1,0 +1,6 @@
+include 'alfresco-solr-debug'
+
+include ':integration-tests'
+["61"].each { version ->
+    include ":integration-tests:alfresco-enterprise-${version}"
+}
