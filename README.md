@@ -55,10 +55,7 @@ Copy bean definition for SolrQueryHTTPClient from the enterprise context and:
         ...
         s_logger.debug("Debug: " + json.get("debug"));
 
-## Further improvements
+For efficiency, it is possible to only send to ES a subset of the debug information, for example total number of hits, total time elapsed and information per shard.
 
-In order to not keep too much data in elasticsearch one can:
-
-  * filter out solr response and log only the information required (e.g. timings and hits per shard)
 
 
