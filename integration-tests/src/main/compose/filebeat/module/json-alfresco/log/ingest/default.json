@@ -31,7 +31,7 @@
 	},
 	{
             "remove": {
-                "field": ["json_mesage"],
+                "field": ["message","json_message.message"],
                 "ignore_missing": true
             }
 	}
