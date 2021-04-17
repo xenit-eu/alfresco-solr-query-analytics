@@ -18,9 +18,9 @@ filebeat.autodiscover:
 
 setup:
   dashboards:
-    enabled: False
+    enabled: True
   kibana:
-    host: "kibana"
+    host: "172.17.0.1"
   
 
 output.elasticsearch:
