@@ -19,7 +19,7 @@ services:
 
   solrlogs:
     image: busybox
-    command: [/bin/sh, -c, 'sleep 30 ; tail -n+1 -f /usr/local/tomcat/logs/solrquery.log']
+    command: [/bin/sh, -c, 'sleep 30 ; tail -n+1 -F /usr/local/tomcat/logs/solrquery.log']
     container_name: solrlogs
     depends_on:
       - alfresco
@@ -80,6 +80,7 @@ services:
     volumes:
       - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - ./filebeat/module:/usr/share/filebeat/module
+      - ./filebeat/kibana/dashboards:/usr/share/filebeat/kibana/7/dashboard
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
