@@ -677,6 +677,9 @@
 		},
 		"totalElapsedTime": {
 		    "type": "long"				
+		},
+		"query": {
+		    "type": "text"				
 		}
 	    }
 	},
