@@ -2,7 +2,7 @@
 
 This module builds an Alfresco amp which logs more information for a solr query. It is useful especially for distributed search, to analyze performance per shard.
 
-The functionality can be controlled with the boolean parameter *solr.useDdebug=true*.
+The functionality can be controlled with the boolean parameter *solr.useDebug=true*.
 
 The module replaces Alfresco's *org.alfresco.repo.search.impl.solr.SolrQueryHTTPClient* and configures a separate appender for its logger, json-based, whose output is solr debug information.
 
@@ -35,7 +35,7 @@ In an ansible setup, the post-start.sh will be done via ansible.
 
 2. Start alfresco and solr
 
-        ./gradlew integration-tests/alfresco-enterprise-61:cU
+        ./gradlew integration-tests:alfresco-enterprise-61:cU
 
 
 3. Access kibana at localhost:5601 (username=elastic,password=changeme)
