@@ -158,7 +158,7 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
         this.useSolrDebug = useSolrDebug;
     }
 
-    public SolrQueryParser solrQueryParser = new SolrQueryParser();
+    private SolrQueryParser solrQueryParser = new SolrQueryParser();
 
     public SolrQueryHTTPClient()
     {
@@ -1147,8 +1147,7 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
                     s_logger.debug("   with: " + body.toString());
                     s_logger.debug("Got: " + results.getNumberFound() + " in " + results.getQueryTime() + " ms");
                 } else {
-                    //JUMP
-                    JSONObject queryString = solrQueryParser.formatToJsonString((String) body.get("query"));
+                    JSONObject queryString = solrQueryParser.formatToQueryJson((String) body.get("query"));
                     s_logger.debug("{\"query\":" + queryString + ", \"track\":" + ((JSONObject)json.get("debug")).get("track") + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
                     s_logger.debug(queryString);
 

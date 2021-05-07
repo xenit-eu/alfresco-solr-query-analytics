@@ -1,6 +1,5 @@
 package util;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +21,7 @@ public class SolrQueryParser{
 
     }
 
-    public JSONObject formatToJsonString(String query) {
-        //HashMap<String, Object> json = new HashMap<>();
+    public JSONObject formatToQueryJson(String query) {
         JSONObject json = new JSONObject();
         json.put("queryString", removeIllegalChars(query));
         try {
@@ -32,14 +30,14 @@ public class SolrQueryParser{
         } catch (Exception e) {
             json.put("extraction_status", e.getMessage());
         }
-        logger.error("Extraction complete. Returning " + json);
+        logger.debug("Extraction complete. Returning " + json);
         return json;
     }
 
     public Set<String> extractProperties(String query) {
         HashMap<String, String> propertyMap = new HashMap<>();
 
-        logger.error("Extracting properties from query = " + query);
+        logger.debug("Extracting properties from query = " + query);
         query = removeIllegalChars(query);
         query = removeLeadingSpacesAfterProperty(query);
         query = replaceTO(query);
@@ -47,7 +45,7 @@ public class SolrQueryParser{
         query = removeANDOR(query);
         query = removeNOTProperties(query);
         query = removeBrackets(query);
-        logger.error("Query after prefiltering = " + query);
+        logger.debug("Query after prefiltering = " + query);
 
         String[] splitQuery = query.split("\\s+");
 
@@ -87,7 +85,7 @@ public class SolrQueryParser{
             }
             propertyMap.put(property, value);
         }
-        logger.error("Extracted properties= " + propertyMap);
+        logger.debug("Extracted properties= " + propertyMap);
         return propertyMap.keySet();
     }
 
