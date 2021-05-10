@@ -16,6 +16,30 @@ Filebeat is configured to use docker autodiscovery based on container/image labe
   * co.elastic.logs/enabled=false - to not send logs to ES
   * eu.xenit.index=solrlogs - custom ES index to send log lines to
 
+### SolrQueryParser
+
+The SolrQueryParser utility extracts properties from the search query. This extraction allows to gather insights about which property is regularly searched upon. This information aides in property relevancy tuning for search interfaces used to query Alfresco. 
+
+Example: 
+
+```
+query= TYPE:"{http://www.alfresco.org/model/site/1.0}site\" AND cm:name:"test"
+result= [TYPE, cm:name]
+```
+
+Properties subsequent to the NOT keyword or contained in the NOT brackets are left out of the extraction.
+
+```
+query= test cm:name:test AND NOT (TYPE:"{http://www.alfresco.org/model/content/1.0}dictionaryModel" OR TYPE:"{http://www.alfresco.org/model/datalist/1.0}issue") 
+result= [FullText, cm:name]
+``` 
+
+However, Lucene search options are still added to the property definition if present.
+
+```
+query= +TYPE:"{http://www.alfresco.org/model/site/1.0}site\" AND !cm:name:"test"
+result= [+TYPE, !cm:name]
+```
 
 ## How to start
 
