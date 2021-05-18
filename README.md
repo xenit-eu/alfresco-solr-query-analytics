@@ -68,6 +68,10 @@ Use discovery mode and explore using fields like
 
         json_message_solr_debug.EXECUTE_QUERY.http://shard1:8080/solr/shard1.QTime
         json_message_solr_debug.EXECUTE_QUERY.http://shard1:8080/solr/shard1.NumFound
+        json_message_solr_debug.parsedQuery.queryString
+        json_message_solr_debug.parsedQuery.properties
+
+Alfresco is available at http://localhost/alfresco. A finder has been included in the stack, available at http://localhost/finder.
 
 ## Maintenance
 
