@@ -1148,9 +1148,7 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
                     s_logger.debug("Got: " + results.getNumberFound() + " in " + results.getQueryTime() + " ms");
                 } else {
                     JSONObject queryString = solrQueryParser.formatToQueryJson((String) body.get("query"));
-                    s_logger.debug("{\"query\":" + queryString + ", \"track\":" + ((JSONObject)json.get("debug")).get("track") + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
-                    s_logger.debug(queryString);
-
+                    s_logger.debug("{\"parsedQuery\":" + queryString + ", \"track\":" + ((JSONObject)json.get("debug")).get("track") + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
                 }
             }
             
