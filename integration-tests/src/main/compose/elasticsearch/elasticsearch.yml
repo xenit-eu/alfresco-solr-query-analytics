@@ -9,5 +9,5 @@ xpack.security.transport.ssl.enabled: true
 xpack.security.transport.ssl.verification_mode: certificate
 xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
 xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
-xpack.monitoring.collection.enabled: true
+xpack.monitoring.collection.enabled: false
 indices.query.bool.max_clause_count: 2048
