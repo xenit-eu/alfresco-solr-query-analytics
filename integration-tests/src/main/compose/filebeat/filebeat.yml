@@ -31,7 +31,7 @@ output.elasticsearch:
    - index: "%{[docker.container.labels.eu_xenit_index]}"
 
 monitoring:
-  enabled: true
+  enabled: false
   elasticsearch:
     hosts: ["172.17.0.1"]	
     username:  "elastic"

@@ -5,10 +5,16 @@ plugins {
 
 dependencies {
     compile('net.logstash.log4j:jsonevent-layout:1.7')
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     alfrescoProvided 'org.alfresco:alfresco-repository:7.33'
     alfrescoProvided 'org.alfresco:alfresco-enterprise-repository:7.25'
     compileOnly 'org.springframework:spring-beans:5.1.8.RELEASE'
     compileOnly 'javax.servlet:servlet-api:2.5'
+}
+
+test {
+    useJUnitPlatform()
 }
 
 apply from: "publish.gradle"

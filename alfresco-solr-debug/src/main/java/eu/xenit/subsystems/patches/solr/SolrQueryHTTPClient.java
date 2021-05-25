@@ -105,6 +105,7 @@ import org.json.JSONTokener;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.extensions.surf.util.I18NUtil;
+import util.SolrQueryParser;
 
 /**
  * @author Andy
@@ -156,6 +157,8 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
     public void setUseSolrDebug(boolean useSolrDebug) {
         this.useSolrDebug = useSolrDebug;
     }
+
+    private SolrQueryParser solrQueryParser = new SolrQueryParser();
 
     public SolrQueryHTTPClient()
     {
@@ -1144,14 +1147,13 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
                     s_logger.debug("   with: " + body.toString());
                     s_logger.debug("Got: " + results.getNumberFound() + " in " + results.getQueryTime() + " ms");
                 } else {
-                    s_logger.debug("{\"query\":\"" + body.get("query") + "\",\"track\":" + ((JSONObject)json.get("debug")).get("track") + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
+                    JSONObject queryString = solrQueryParser.formatToQueryJson((String) body.get("query"));
+                    s_logger.debug("{\"parsedQuery\":" + queryString + ", \"track\":" + ((JSONObject)json.get("debug")).get("track") + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
                 }
             }
             
             return results;
     }
-
-    
 
     private StringBuffer buildSortParameters(BasicSearchParameters searchParameters, URLCodec encoder)
                 throws UnsupportedEncodingException

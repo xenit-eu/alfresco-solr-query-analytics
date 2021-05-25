@@ -1,6 +1,14 @@
 version: '2.2'
 
 services:
+  proxy:
+    image: hub.xenit.eu/public/haproxy-alfresco:0.0.2
+    container_name: proxy
+    environment:
+    - HAPROXY_INCLUDE_FINDER=true
+    ports:
+    - 80:80
+
   alfresco:
     image: ${DOCKER_IMAGE}
     container_name: alfresco    
@@ -16,6 +24,10 @@ services:
     ports:
     - 8080:8080
     - 8000:8000
+
+  alfred-finder:
+    image: hub.xenit.eu/alfred-finder/finder-app:2.2.0-rc.9
+    container_name: finder
 
   solrlogs:
     image: busybox
