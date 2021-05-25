@@ -2,7 +2,8 @@ version: '3.2'
 
 services:
   elasticsearch:
-    image: elasticsearch:7.5.0
+    #image: elasticsearch:7.5.0
+    image: elasticsearch:7.10.1
     container_name: elasticsearch
     restart: unless-stopped
     environment:
@@ -22,7 +23,8 @@ services:
       - ./elasticsearch/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12
 
   kibana:
-    image: kibana:7.5.0
+    #    image: kibana:7.5.0
+    image: kibana:7.10.1
     container_name: kibana
     restart: unless-stopped
     volumes:
