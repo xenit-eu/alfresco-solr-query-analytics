@@ -51,15 +51,15 @@ public class SolrQueryParser{
 
         for (String keyword : splitQuery) {
             //Example +TYPE:"{http://www.alfresco.org/model/site/1.0}site"
-            String typePropertyRegex = "(" + ALLOWED_FTS_OPTIONS + "?TYPE):(.*)";
+            String typePropertyRegex = ALLOWED_FTS_OPTIONS + "?(TYPE):(.*)";
             //Example PATH:"/app:company_home/st:sites/cm:test-site//*"
-            String pathRegex =  "(" + ALLOWED_FTS_OPTIONS + "?PATH):(.*)";
+            String pathRegex =  ALLOWED_FTS_OPTIONS + "?(PATH):(.*)";
             //Example TEXT:"test"
-            String textRegex = "(" + ALLOWED_FTS_OPTIONS + "?TEXT):(.*)";
+            String textRegex = ALLOWED_FTS_OPTIONS + "?(TEXT):(.*)";
             //Example {http://www.alfresco.org/model/content/1.0}created
-            String qnamePropertyRegex = "(" + ALLOWED_FTS_OPTIONS + "\\{[^\\s]*\\})(" + ALLOWED_PROPERTY_CHARS + "*):(.*)";
+            String qnamePropertyRegex = ALLOWED_FTS_OPTIONS + "?(\\{[^\\s]*\\})(" + ALLOWED_PROPERTY_CHARS + "*):(.*)";
             //Example cm:name:test
-            String formattedPropertyRegex = "(.*):(.*):(.*)";
+            String formattedPropertyRegex = ALLOWED_FTS_OPTIONS + "?(.*):(.*):(.*)";
 
             String property;
             String value;

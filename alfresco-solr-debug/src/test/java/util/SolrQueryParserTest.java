@@ -52,13 +52,17 @@ public class SolrQueryParserTest {
         Set<String> formattedPropertySet = new HashSet<>();
         for (String property : propertyMap.keySet()){
             if (shouldBeExtracted(property)) {
-                formattedPropertySet.add(solrQueryParser.removeIllegalChars(property));
+                formattedPropertySet.add(removeLuceneQueryOptions(solrQueryParser.removeIllegalChars(property)));
             }
         }
         for (String property : extractedProperties){
             assertTrue(shouldBeExtracted(property));
         }
         assertEquals(formattedPropertySet, extractedProperties);
+    }
+
+    private String removeLuceneQueryOptions(String property) {
+        return property.replaceAll(solrQueryParser.ALLOWED_FTS_OPTIONS, "");
     }
 
     private boolean shouldBeExtracted(String property) {
@@ -145,6 +149,13 @@ public class SolrQueryParserTest {
     @Test
     public void typeVariationQueryTest() {
         propertyMap.put("+TYPE","\"{http://www.alfresco.org/model/site/1.0}site\"");
+    }
+
+    @Test
+    public void lunceneQueryOptionsTest() {
+        propertyMap.put("+cm:name","\" test\"");
+        propertyMap.put("OR","");
+        propertyMap.put("-cm:title","\" test*\"");
     }
 
     @Test
