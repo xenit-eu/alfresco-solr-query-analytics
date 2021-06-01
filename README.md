@@ -34,11 +34,11 @@ query= test cm:name:test AND NOT (TYPE:"{http://www.alfresco.org/model/content/1
 result= [FullText, cm:name]
 ``` 
 
-However, Lucene search options are still added to the property definition if present.
+Lucene search options are removed if present.
 
 ```
 query= +TYPE:"{http://www.alfresco.org/model/site/1.0}site\" AND !cm:name:"test"
-result= [+TYPE, !cm:name]
+result= [TYPE, cm:name]
 ```
 
 ## How to start
@@ -80,6 +80,7 @@ Copy bean definition for SolrQueryHTTPClient from the enterprise context and:
 * replace the implementation class
 * make sure the shard registry bean being used is search.solrShardRegistry (lowercase)
 * add useSolrDebug property
+* add SolrQuery bean setter
 
 
 * only logger lines need to be changed, depending on the useSolrDebug variable:
