@@ -3,12 +3,14 @@ package util;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.alfresco.service.namespace.NamespaceService;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.regex.*;
 import java.util.Set;
 
-public class SolrQueryParser{
+public class SolrQueryParser {
 
     private static final Logger logger = LoggerFactory.getLogger(SolrQueryParser.class);
 
@@ -16,6 +18,8 @@ public class SolrQueryParser{
     public final String QUERY_OPTIONS_REGEX = "\\*|\\?";
     public final String ALLOWED_PROPERTY_CHARS = "[\\w|\\.]";
     public final String ALLOWED_FTS_OPTIONS = "[\\-|\\!|\\+|\\~|\\^]";
+
+    private NamespaceService namespaceService;
 
     public SolrQueryParser() {
 
@@ -25,7 +29,7 @@ public class SolrQueryParser{
         JSONObject json = new JSONObject();
         json.put("queryString", removeIllegalChars(query));
         try {
-            json.put("properties" , extractProperties(query));
+            json.put("properties", extractProperties(query));
             json.put("extraction_status", "OK");
         } catch (Exception e) {
             json.put("extraction_status", e.getMessage());
@@ -36,7 +40,6 @@ public class SolrQueryParser{
 
     public Set<String> extractProperties(String query) {
         HashMap<String, String> propertyMap = new HashMap<>();
-
         logger.debug("Extracting properties from query = " + query);
         query = removeIllegalChars(query);
         query = removeLeadingSpacesAfterProperty(query);
@@ -53,11 +56,11 @@ public class SolrQueryParser{
             //Example +TYPE:"{http://www.alfresco.org/model/site/1.0}site"
             String typePropertyRegex = ALLOWED_FTS_OPTIONS + "?(TYPE):(.*)";
             //Example PATH:"/app:company_home/st:sites/cm:test-site//*"
-            String pathRegex =  ALLOWED_FTS_OPTIONS + "?(PATH):(.*)";
+            String pathRegex = ALLOWED_FTS_OPTIONS + "?(PATH):(.*)";
             //Example TEXT:"test"
             String textRegex = ALLOWED_FTS_OPTIONS + "?(TEXT):(.*)";
             //Example {http://www.alfresco.org/model/content/1.0}created
-            String qnamePropertyRegex = ALLOWED_FTS_OPTIONS + "?(\\{[^\\s]*\\})(" + ALLOWED_PROPERTY_CHARS + "*):(.*)";
+            String qnamePropertyRegex = ALLOWED_FTS_OPTIONS + "?\\{([^\\s]*)\\}(" + ALLOWED_PROPERTY_CHARS + "*):(.*)";
             //Example cm:name:test
             String formattedPropertyRegex = ALLOWED_FTS_OPTIONS + "?(.*):(.*):(.*)";
 
@@ -74,19 +77,29 @@ public class SolrQueryParser{
                 property = FULL_TEXT_PROPERTY;
                 value = keyword.replaceAll(textRegex, "$2");
             } else if (keyword.matches(qnamePropertyRegex)) {
-                property = keyword.replaceAll(qnamePropertyRegex, "$1$2");
+                property = replaceNameSpaceToPrefix(keyword.replaceAll(qnamePropertyRegex, "$1")) + keyword.replaceAll(qnamePropertyRegex, "$2");;
                 value = keyword.replaceAll(qnamePropertyRegex, "$3");
             } else if (keyword.matches(formattedPropertyRegex)) {
                 property = keyword.replaceAll(formattedPropertyRegex, "$1:$2");
                 value = keyword.replaceAll(formattedPropertyRegex, "$3");
             } else {
                 property = FULL_TEXT_PROPERTY;
-                value=keyword;
+                value = keyword;
             }
             propertyMap.put(property, value);
         }
         logger.debug("Extracted properties= " + propertyMap);
         return propertyMap.keySet();
+    }
+
+    private String replaceNameSpaceToPrefix(String nameSpaceURI) {
+        if ( namespaceService != null ) {
+            Collection<String> prefixes = namespaceService.getPrefixes(nameSpaceURI.replace("\\",""));
+            if (!prefixes.isEmpty()) {
+                return prefixes.iterator().next() + ":";
+            }
+        }
+        return "{" + nameSpaceURI + "}";
     }
 
     public String removeIllegalChars(String query) {
@@ -96,19 +109,19 @@ public class SolrQueryParser{
     private String removeLeadingSpacesAfterProperty(String query) {
         Pattern leadingSpaces = Pattern.compile(":\\s+");
         Matcher matcher = leadingSpaces.matcher(query);
-        return regexReplace(matcher, "\\s" , "");
+        return regexReplace(matcher, "\\s", "");
     }
 
     private String removeSpacesFromExactQueries(String query) {
         Pattern exactSearchPatter = Pattern.compile("\\\\\"[\\w|\\s|" + QUERY_OPTIONS_REGEX + "]*\\\\\"");
         Matcher matcher = exactSearchPatter.matcher(query);
-        return regexReplace(matcher, "\\s" , "");
+        return regexReplace(matcher, "\\s", "");
     }
 
     private String regexReplace(Matcher matcher, String regex, String replacement) {
         StringBuffer stringBuffer = new StringBuffer();
         while (matcher.find()) {
-            matcher.appendReplacement(stringBuffer , matcher.group().replaceAll(regex, replacement));
+            matcher.appendReplacement(stringBuffer, matcher.group().replaceAll(regex, replacement));
         }
         matcher.appendTail(stringBuffer);
         return stringBuffer.toString();
@@ -116,7 +129,7 @@ public class SolrQueryParser{
 
     public String removeNOTProperties(String query) {
         //TODO removing properties that are negated by ! or -
-        // at the moment they will be added with the symbol included i.e: !cm:name
+        // at the moment they will be added without the lucene search options
         Pattern exactSearchPatter = Pattern.compile("\\s*NOT\\s+");
         while (true) {
             Matcher matcher = exactSearchPatter.matcher(query);
@@ -125,7 +138,7 @@ public class SolrQueryParser{
             } else {
                 String subQuery = query.substring(matcher.end());
                 int endIndex;
-                if (subQuery.length() == 0 || subQuery.charAt(0) == '('){
+                if (subQuery.length() == 0 || subQuery.charAt(0) == '(') {
                     int openBr = 0;
                     endIndex = matcher.end();
                     for (int i = 0; i < subQuery.length(); i++) {
@@ -170,6 +183,10 @@ public class SolrQueryParser{
 
     private String replaceTO(String query) {
         return query.replaceAll("\\s+TO\\s+", "..");
+    }
+
+    public void setNamespaceService(NamespaceService namespaceService) {
+        this.namespaceService = namespaceService;
     }
 
 }

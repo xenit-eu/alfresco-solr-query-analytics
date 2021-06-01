@@ -52,6 +52,9 @@
         <property name="defaultShardedFacetLimit" value="${solr.defaultShardedFacetLimit}"/>
         <property name="useDynamicShardRegistration" value="${solr.useDynamicShardRegistration}"/>
         <property name="useSolrDebug" value="${solr.useDebug}"/>
+        <property name="solrQueryParser">
+            <ref bean="SolrQueryParser" />
+        </property>
     </bean>
 
 </beans>
