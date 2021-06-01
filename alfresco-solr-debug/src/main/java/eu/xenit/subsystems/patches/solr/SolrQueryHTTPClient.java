@@ -158,7 +158,7 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
         this.useSolrDebug = useSolrDebug;
     }
 
-    private SolrQueryParser solrQueryParser = new SolrQueryParser();
+    private SolrQueryParser solrQueryParser;
 
     public SolrQueryHTTPClient()
     {
@@ -225,6 +225,10 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
     public void setShardRegistry(ShardRegistry shardRegistry)
     {
         this.shardRegistry = shardRegistry;
+    }
+
+    public void setSolrQueryParser(SolrQueryParser solrQueryParser) {
+        this.solrQueryParser = solrQueryParser;
     }
 
     public void setUseDynamicShardRegistration(boolean useDynamicShardRegistration)
