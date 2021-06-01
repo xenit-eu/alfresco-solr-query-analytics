@@ -642,6 +642,19 @@
 	},
 	"json_message_solr_debug": {
 	    "properties": {
+		"parsedQuery": {
+		    "properties": {
+			"extraction_status": {
+			    "type": "keyword"
+			},
+			"queryString": {
+			    "type": "text"
+			},
+			"properties": {
+			    "type": "keyword"
+			}			
+		    }
+		},
 		"track": {
 		    "properties": {
 			"rid": {
@@ -677,9 +690,6 @@
 		},
 		"totalElapsedTime": {
 		    "type": "long"				
-		},
-		"query": {
-		    "type": "text"				
 		}
 	    }
 	},
