@@ -1,0 +1,762 @@
+{
+    "dynamic_templates": [
+	{
+	    "labels": {
+		"path_match": "labels.*",
+		"match_mapping_type": "string",
+		"mapping": {
+		    "type": "keyword"
+		}
+	    }
+	},
+	{
+	    "container.labels": {
+		"path_match": "container.labels.*",
+		"match_mapping_type": "string",
+		"mapping": {
+		    "type": "keyword"
+		}
+	    }
+	},
+	{
+	    "fields": {
+		"path_match": "fields.*",
+		"match_mapping_type": "string",
+		"mapping": {
+		    "type": "keyword"		}
+	    }
+	},
+	{
+	    "docker.container.labels": {
+		"path_match": "docker.container.labels.*",
+		"match_mapping_type": "string",
+		"mapping": {
+		    "type": "keyword"
+		}
+	    }
+	},
+	{
+	    "docker.attrs": {
+		"path_match": "docker.attrs.*",
+		"match_mapping_type": "string",
+		"mapping": {
+		    "type": "keyword"
+		}
+	    }
+	},
+	{
+	    "kibana.log.meta": {
+		"path_match": "kibana.log.meta.*",
+		"match_mapping_type": "string",
+		"mapping": {
+		    "type": "keyword"
+		}
+	    }
+	},
+	{
+	    "strings_as_keyword": {
+		"match_mapping_type": "string",
+		"mapping": {
+		    "ignore_above": 1024,
+		    "type": "keyword"
+		}
+	    }
+	},
+	{
+	    "elapsedTime": {
+		"path_match": "json_message_solr_debug.track.EXECUTE_QUERY.*.ElapsedTime",
+		"match_mapping_type": "string",		
+		"mapping": {
+		    "type": "long"
+		}
+	    }
+	},
+	{
+	    "numFound": {
+		"path_match": "json_message_solr_debug.track.EXECUTE_QUERY.*.NumFound",
+		"match_mapping_type": "string",		
+		"mapping": {
+		    "type": "long"
+		}
+	    }
+	},
+	{
+	    "qTime": {
+		"path_match": "json_message.solr_debug.track.EXECUTE_QUERY.*.QTime",
+		"match_mapping_type": "string",		
+		"mapping": {
+		    "type": "long"
+		}
+	    }
+	}	
+    ],
+    "date_detection": false,
+    "properties": {
+	"@timestamp": {
+	    "type": "date"
+	},
+	"agent": {
+	    "properties": {
+		"ephemeral_id": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"hostname": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"id": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"ip": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"name": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"type": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"version": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		}
+	    }
+	},
+	"container": {
+	    "properties": {
+		"id": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"image": {
+		    "properties": {
+			"name": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"tag": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			}
+		    }
+		},
+		"labels": {
+		    "type": "object"
+		},
+		"name": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"runtime": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		}
+	    }
+	},
+	"docker": {
+	    "properties": {
+		"attrs": {
+		    "type": "object"
+		},
+		"container": {
+		    "properties": {
+			"labels": {
+			    "properties": {
+				"co_elastic_logs/module": {
+				    "type": "keyword"
+				},
+				"com_docker_compose_config-hash": {
+				    "type": "keyword"
+				},
+				"com_docker_compose_container-number": {
+				    "type": "keyword"
+				},
+				"com_docker_compose_oneoff": {
+				    "type": "keyword"
+				},
+				"com_docker_compose_project": {
+				    "type": "keyword"
+				},
+				"com_docker_compose_project_config_files": {
+				    "type": "keyword"
+				},
+				"com_docker_compose_project_working_dir": {
+				    "type": "keyword"
+				},
+				"com_docker_compose_service": {
+				    "type": "keyword"
+				},
+				"com_docker_compose_version": {
+				    "type": "keyword"
+				},
+				"com_docker_stack_namespace": {
+				    "type": "keyword"
+				},
+				"com_docker_swarm_node_id": {
+				    "type": "keyword"
+				},
+				"com_docker_swarm_service_id": {
+				    "type": "keyword"
+				},
+				"com_docker_swarm_service_name": {
+				    "type": "keyword"
+				},
+				"com_docker_swarm_task": {
+				    "type": "keyword"
+				},
+				"com_docker_swarm_task_id": {
+				    "type": "keyword"
+				},
+				"com_docker_swarm_task_name": {
+				    "type": "keyword"
+				},
+				"eu_xenit_cadvisor": {
+				    "type": "keyword"
+				},
+				"eu_xenit_docker_docker-alfresco_version": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_applyAlfrescoAmp": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_applyAlfrescoDE": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_applyAlfrescoSM": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_applyShareAmp": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_applyShareSM": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_git_branch": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_git_commit_author": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_git_commit_id": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_git_commit_message": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_git_commit_url": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_git_origin": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_resolveAlfrescoWar": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_resolveShareWar": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_stripAlfrescoWar": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle-plugin_stripShareWar": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle_docker_git_branch": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle_docker_git_commit_author": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle_docker_git_commit_id": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle_docker_git_commit_url": {
+				    "type": "keyword"
+				},
+				"eu_xenit_gradle_docker_git_origin": {
+				    "type": "keyword"
+				},
+				"eu_xenit_management_endpoints_web_health_path": {
+				    "type": "keyword"
+				},
+				"eu_xenit_prometheus_metrics-path": {
+				    "type": "keyword"
+				},
+				"eu_xenit_prometheus_params": {
+				    "type": "keyword"
+				},
+				"eu_xenit_prometheus_port": {
+				    "type": "keyword"
+				},
+				"eu_xenit_prometheus_service": {
+				    "type": "keyword"
+				},
+				"maintainer": {
+				    "type": "keyword"
+				},
+				"org_label-schema_build-date": {
+				    "type": "keyword"
+				},
+				"org_label-schema_license": {
+				    "type": "keyword"
+				},
+				"org_label-schema_name": {
+				    "type": "keyword"
+				},
+				"org_label-schema_schema-version": {
+				    "type": "keyword"
+				},
+				"org_label-schema_url": {
+				    "type": "keyword"
+				},
+				"org_label-schema_usage": {
+				    "type": "keyword"
+				},
+				"org_label-schema_vcs-ref": {
+				    "type": "keyword"
+				},
+				"org_label-schema_vcs-url": {
+				    "type": "keyword"
+				},
+				"org_label-schema_vendor": {
+				    "type": "keyword"
+				},
+				"org_label-schema_version": {
+				    "type": "keyword"
+				},
+				"org_opencontainers_image_created": {
+				    "type": "keyword"
+				},
+				"org_opencontainers_image_documentation": {
+				    "type": "keyword"
+				},
+				"org_opencontainers_image_licenses": {
+				    "type": "keyword"
+				},
+				"org_opencontainers_image_revision": {
+				    "type": "keyword"
+				},
+				"org_opencontainers_image_source": {
+				    "type": "keyword"
+				},
+				"org_opencontainers_image_title": {
+				    "type": "keyword"
+				},
+				"org_opencontainers_image_url": {
+				    "type": "keyword"
+				},
+				"org_opencontainers_image_vendor": {
+				    "type": "keyword"
+				},
+				"org_opencontainers_image_version": {
+				    "type": "keyword"
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	},
+	"ecs": {
+	    "properties": {
+		"version": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		}
+	    }
+	},
+	"event": {
+	    "properties": {
+		"action": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"category": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"code": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"created": {
+		    "type": "date"
+		},
+		"dataset": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"duration": {
+		    "type": "long"
+		},
+		"end": {
+		    "type": "date"
+		},
+		"hash": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"id": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"kind": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"module": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"original": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"outcome": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"risk_score": {
+		    "type": "float"
+		},
+		"risk_score_norm": {
+		    "type": "float"
+		},
+		"sequence": {
+		    "type": "long"
+		},
+		"severity": {
+		    "type": "long"
+		},
+		"start": {
+		    "type": "date"
+		},
+		"timezone": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"type": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		}
+	    }
+	},
+	"fileset": {
+	    "properties": {
+		"name": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		}
+	    }
+	},
+	"host": {
+	    "properties": {
+		"architecture": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"containerized": {
+		    "type": "boolean"
+		},
+		"geo": {
+		    "properties": {
+			"city_name": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"continent_name": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"country_iso_code": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"country_name": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"location": {
+			    "type": "geo_point"
+			},
+			"name": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"region_iso_code": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"region_name": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			}
+		    }
+		},
+		"hostname": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"id": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"ip": {
+		    "type": "ip"
+		},
+		"mac": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"name": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"os": {
+		    "properties": {
+			"build": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"codename": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"family": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"full": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"kernel": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"name": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"platform": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"version": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			}
+		    }
+		},
+		"type": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"user": {
+		    "properties": {
+			"email": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"full_name": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"group": {
+			    "properties": {
+				"id": {
+				    "type": "keyword",
+				    "ignore_above": 1024
+				},
+				"name": {
+				    "type": "keyword",
+				    "ignore_above": 1024
+				}
+			    }
+			},
+			"hash": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"id": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"name": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			}
+		    }
+		}
+	    }
+	},
+	"input": {
+	    "properties": {
+		"type": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		}
+	    }
+	},
+	"json_log_error": {
+	    "type": "keyword",
+	    "ignore_above": 1024
+	},
+	"json_message": {
+	    "properties": {
+		"@timestamp": {
+		    "type": "date"
+		},
+		"@version": {
+		    "type": "long"
+		},
+		"class": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"exception": {
+		    "properties": {
+			"exception_class": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			},
+			"stacktrace": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			}
+		    }
+		},
+		"file": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"level": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"line_number": {
+		    "type": "long"
+		},
+		"logger_name": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"mdc": {
+		    "type": "object"
+		},
+		"message": {
+		    "type": "text"
+		},
+		"method": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"source_host": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"thread_name": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		}
+	    }
+	},
+	"json_message_solr_debug": {
+	    "properties": {
+		"track": {
+		    "properties": {
+			"rid": {
+			    "type": "keyword",
+			    "ignore_above": 1024				
+			}
+		    }
+		},
+		"totalNumFound": {
+		    "type": "long"				
+		},
+		"totalElapsedTime": {
+		    "type": "long"				
+		},
+		"query": {
+		    "type": "text"				
+		}		
+	    }
+	},
+	"log": {
+	    "properties": {
+		"file": {
+		    "properties": {
+			"path": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			}
+		    }
+		},
+		"flags": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"level": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"offset": {
+		    "type": "long"
+		},
+		"original": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"source": {
+		    "properties": {
+			"address": {
+			    "type": "keyword",
+			    "ignore_above": 1024
+			}
+		    }
+		}
+	    }
+	},
+	"message": {
+	    "type": "text",
+	    "norms": false
+	},
+	"service": {
+	    "properties": {
+		"ephemeral_id": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"id": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"name": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"state": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"type": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		},
+		"version": {
+		    "type": "keyword",
+		    "ignore_above": 1024
+		}
+	    }
+	},
+	"stream": {
+	    "type": "keyword",
+	    "ignore_above": 1024
+	}
+    }
+}

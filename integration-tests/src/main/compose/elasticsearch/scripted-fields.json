@@ -1,0 +1,3 @@
+if (doc.containsKey('json_message_solr_debug') && doc['json_message_solr_debug']['track']['EXECUTE_QUERY'].containsKey('http://shard1:8080/solr/shard1')) {
+ return doc['json_message_solr_debug']['track']['EXECUTE_QUERY']['http://shard1:8080/solr/shard1']['ElapsedTime'].value
+} 
