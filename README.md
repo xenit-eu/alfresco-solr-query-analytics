@@ -62,14 +62,23 @@ In an ansible setup, the post-start.sh will be done via ansible.
         ./gradlew integration-tests:alfresco-enterprise-61:cU
 
 
-3. Access kibana at localhost:5601 (username=elastic,password=changeme)
+3. Trigger some searches
+
+   	cd integration-tests/src/main/compose
+	./send_searches.sh
+	
+4. Access kibana at localhost:5601 (username=elastic,password=changeme)
 
 Use discovery mode and explore using fields like
 
-        json_message_solr_debug.EXECUTE_QUERY.http://shard1:8080/solr/shard1.QTime
-        json_message_solr_debug.EXECUTE_QUERY.http://shard1:8080/solr/shard1.NumFound
-        json_message_solr_debug.parsedQuery.queryString
-        json_message_solr_debug.parsedQuery.properties
+    	xenit.totalElapsedTime
+	xenit.totalNumFound
+        xenit.shard1.ElapsedTime
+        xenit.shard1.NumFound
+        xenit.queryString
+        xenit.queryProperties
+
+There are also some dashboards available with information about performance per shard and properties searched for.
 
 Alfresco is available at http://localhost/alfresco. A finder has been included in the stack, available at http://localhost/finder.
 
