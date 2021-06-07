@@ -6,6 +6,7 @@ services:
     container_name: proxy
     environment:
     - HAPROXY_INCLUDE_FINDER=true
+    - HAPROXY_SERVICE_FINDER=finder
     ports:
     - 80:80
 
@@ -25,8 +26,9 @@ services:
     - 8080:8080
     - 8000:8000
 
-  alfred-finder:
+  finder:
     image: hub.xenit.eu/alfred-finder/finder-app:2.2.0-rc.9
+    command: "nginx -g 'daemon off;'"
     container_name: finder
 
   solrlogs:
