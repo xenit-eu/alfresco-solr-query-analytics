@@ -7,13 +7,13 @@
       "namespaces": [
         "default"
       ],
-      "updated_at": "2021-06-07T16:13:24.789Z",
-      "version": "WzI1NjUsMV0=",
+      "updated_at": "2021-06-08T09:10:57.419Z",
+      "version": "Wzc5LDFd",
       "attributes": {
         "title": "Searched properties",
         "hits": 0,
         "description": "",
-        "panelsJSON": "[{\"version\":\"7.10.1\",\"gridData\":{\"x\":0,\"y\":0,\"w\":21,\"h\":8,\"i\":\"fe2dc9d0-78f4-4b0b-a13e-fedcdf6bf42c\"},\"panelIndex\":\"fe2dc9d0-78f4-4b0b-a13e-fedcdf6bf42c\",\"embeddableConfig\":{},\"panelRefName\":\"panel_0\"},{\"version\":\"7.10.1\",\"gridData\":{\"x\":21,\"y\":0,\"w\":14,\"h\":8,\"i\":\"14614490-4332-4385-8ec9-c2f1ef2239b9\"},\"panelIndex\":\"14614490-4332-4385-8ec9-c2f1ef2239b9\",\"embeddableConfig\":{},\"panelRefName\":\"panel_1\"},{\"version\":\"7.10.1\",\"gridData\":{\"x\":35,\"y\":0,\"w\":13,\"h\":8,\"i\":\"8b4f1227-71bf-465a-8d93-1e995ce81f5b\"},\"panelIndex\":\"8b4f1227-71bf-465a-8d93-1e995ce81f5b\",\"embeddableConfig\":{},\"panelRefName\":\"panel_2\"},{\"version\":\"7.10.1\",\"gridData\":{\"x\":0,\"y\":8,\"w\":48,\"h\":15,\"i\":\"b8fd8e52-5478-47a9-816d-0c7ed7396361\"},\"panelIndex\":\"b8fd8e52-5478-47a9-816d-0c7ed7396361\",\"embeddableConfig\":{},\"panelRefName\":\"panel_3\"},{\"version\":\"7.10.1\",\"gridData\":{\"x\":0,\"y\":23,\"w\":24,\"h\":15,\"i\":\"305021e8-f4f6-4718-8479-bfc5869b0523\"},\"panelIndex\":\"305021e8-f4f6-4718-8479-bfc5869b0523\",\"embeddableConfig\":{},\"panelRefName\":\"panel_4\"},{\"version\":\"7.10.1\",\"gridData\":{\"x\":24,\"y\":23,\"w\":24,\"h\":15,\"i\":\"fce9df20-39e3-4dfe-9f0e-da0a0f04c88f\"},\"panelIndex\":\"fce9df20-39e3-4dfe-9f0e-da0a0f04c88f\",\"embeddableConfig\":{},\"panelRefName\":\"panel_5\"},{\"version\":\"7.10.1\",\"gridData\":{\"x\":0,\"y\":38,\"w\":48,\"h\":11,\"i\":\"0083b3ff-7c99-4019-973d-07596ff17fec\"},\"panelIndex\":\"0083b3ff-7c99-4019-973d-07596ff17fec\",\"embeddableConfig\":{\"sort\":[[\"@timestamp\",\"desc\"],[\"json_message_solr_debug.totalElapsedTime\",\"desc\"]]},\"panelRefName\":\"panel_6\"}]",
+        "panelsJSON": "[{\"embeddableConfig\":{},\"gridData\":{\"h\":8,\"i\":\"fe2dc9d0-78f4-4b0b-a13e-fedcdf6bf42c\",\"w\":21,\"x\":0,\"y\":0},\"panelIndex\":\"fe2dc9d0-78f4-4b0b-a13e-fedcdf6bf42c\",\"version\":\"7.10.1\",\"panelRefName\":\"panel_0\"},{\"embeddableConfig\":{},\"gridData\":{\"h\":8,\"i\":\"14614490-4332-4385-8ec9-c2f1ef2239b9\",\"w\":14,\"x\":21,\"y\":0},\"panelIndex\":\"14614490-4332-4385-8ec9-c2f1ef2239b9\",\"version\":\"7.10.1\",\"panelRefName\":\"panel_1\"},{\"embeddableConfig\":{},\"gridData\":{\"h\":8,\"i\":\"8b4f1227-71bf-465a-8d93-1e995ce81f5b\",\"w\":13,\"x\":35,\"y\":0},\"panelIndex\":\"8b4f1227-71bf-465a-8d93-1e995ce81f5b\",\"version\":\"7.10.1\",\"panelRefName\":\"panel_2\"},{\"embeddableConfig\":{},\"gridData\":{\"h\":15,\"i\":\"b8fd8e52-5478-47a9-816d-0c7ed7396361\",\"w\":48,\"x\":0,\"y\":8},\"panelIndex\":\"b8fd8e52-5478-47a9-816d-0c7ed7396361\",\"version\":\"7.10.1\",\"panelRefName\":\"panel_3\"},{\"embeddableConfig\":{},\"gridData\":{\"h\":15,\"i\":\"305021e8-f4f6-4718-8479-bfc5869b0523\",\"w\":24,\"x\":0,\"y\":23},\"panelIndex\":\"305021e8-f4f6-4718-8479-bfc5869b0523\",\"version\":\"7.10.1\",\"panelRefName\":\"panel_4\"},{\"embeddableConfig\":{},\"gridData\":{\"h\":15,\"i\":\"fce9df20-39e3-4dfe-9f0e-da0a0f04c88f\",\"w\":24,\"x\":24,\"y\":23},\"panelIndex\":\"fce9df20-39e3-4dfe-9f0e-da0a0f04c88f\",\"version\":\"7.10.1\",\"panelRefName\":\"panel_5\"},{\"embeddableConfig\":{\"sort\":[[\"@timestamp\",\"desc\"],[\"json_message_solr_debug.totalElapsedTime\",\"desc\"]]},\"gridData\":{\"h\":11,\"i\":\"0083b3ff-7c99-4019-973d-07596ff17fec\",\"w\":48,\"x\":0,\"y\":38},\"panelIndex\":\"0083b3ff-7c99-4019-973d-07596ff17fec\",\"version\":\"7.10.1\",\"panelRefName\":\"panel_6\"}]",
         "optionsJSON": "{\"hidePanelTitles\":false,\"useMargins\":true}",
         "version": 1,
         "timeRestore": false,
@@ -68,23 +68,23 @@
       "namespaces": [
         "default"
       ],
-      "updated_at": "2021-06-07T15:40:00.446Z",
-      "version": "WzEzNzMsMV0=",
+      "updated_at": "2021-06-08T09:06:07.808Z",
+      "version": "WzIyLDFd",
       "attributes": {
-        "title": "Basic metrics",
-        "visState": "{\"title\":\"Basic metrics\",\"type\":\"metric\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"params\":{\"customLabel\":\"Solr Requests\"},\"schema\":\"metric\"},{\"id\":\"2\",\"enabled\":true,\"type\":\"avg\",\"params\":{\"field\":\"xenit.totalElapsedTime\",\"json\":\"\",\"customLabel\":\"Average total response time [ms]\"},\"schema\":\"metric\"},{\"id\":\"3\",\"enabled\":true,\"type\":\"avg\",\"params\":{\"field\":\"xenit.totalNumFound\",\"customLabel\":\"Average number of results found\"},\"schema\":\"metric\"}],\"params\":{\"addTooltip\":true,\"addLegend\":false,\"type\":\"metric\",\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":45}}}}",
-        "uiStateJSON": "{}",
         "description": "",
-        "version": 1,
         "kibanaSavedObjectMeta": {
           "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
-        }
+        },
+        "title": "Basic metrics",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"Basic metrics\",\"type\":\"metric\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"params\":{\"customLabel\":\"Solr Requests\"},\"schema\":\"metric\"},{\"id\":\"2\",\"enabled\":true,\"type\":\"avg\",\"params\":{\"field\":\"xenit.totalElapsedTime\",\"json\":\"\",\"customLabel\":\"Average total response time [ms]\"},\"schema\":\"metric\"},{\"id\":\"3\",\"enabled\":true,\"type\":\"avg\",\"params\":{\"field\":\"xenit.totalNumFound\",\"customLabel\":\"Average number of results found\"},\"schema\":\"metric\"}],\"params\":{\"addTooltip\":true,\"addLegend\":false,\"type\":\"metric\",\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":45}}}}"
       },
       "references": [
         {
+          "id": "solrlogs-*",
           "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
-          "type": "index-pattern",
-          "id": "solrlogs-*"
+          "type": "index-pattern"
         }
       ],
       "migrationVersion": {
@@ -97,23 +97,23 @@
       "namespaces": [
         "default"
       ],
-      "updated_at": "2021-06-07T15:40:36.192Z",
-      "version": "WzEzOTQsMV0=",
+      "updated_at": "2021-06-08T09:06:07.808Z",
+      "version": "WzIzLDFd",
       "attributes": {
-        "title": "Dashboard options",
-        "visState": "{\"title\":\"Dashboard options\",\"type\":\"input_control_vis\",\"aggs\":[],\"params\":{\"controls\":[{\"id\":\"1622726501328\",\"fieldName\":\"xenit.queryProperties\",\"parent\":\"\",\"label\":\"Query properties\",\"type\":\"list\",\"options\":{\"type\":\"terms\",\"multiselect\":true,\"dynamicOptions\":true,\"size\":5,\"order\":\"desc\"},\"indexPatternRefName\":\"control_0_index_pattern\"}],\"updateFiltersOnChange\":false,\"useTimeFilter\":false,\"pinFilters\":false}}",
-        "uiStateJSON": "{}",
         "description": "",
-        "version": 1,
         "kibanaSavedObjectMeta": {
           "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
-        }
+        },
+        "title": "Dashboard options",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"Dashboard options\",\"type\":\"input_control_vis\",\"aggs\":[],\"params\":{\"controls\":[{\"id\":\"1622726501328\",\"fieldName\":\"xenit.queryProperties\",\"parent\":\"\",\"label\":\"Query properties\",\"type\":\"list\",\"options\":{\"type\":\"terms\",\"multiselect\":true,\"dynamicOptions\":true,\"size\":5,\"order\":\"desc\"},\"indexPatternRefName\":\"control_0_index_pattern\"}],\"updateFiltersOnChange\":false,\"useTimeFilter\":false,\"pinFilters\":false}}"
       },
       "references": [
         {
+          "id": "solrlogs-*",
           "name": "control_0_index_pattern",
-          "type": "index-pattern",
-          "id": "solrlogs-*"
+          "type": "index-pattern"
         }
       ],
       "migrationVersion": {
@@ -126,23 +126,23 @@
       "namespaces": [
         "default"
       ],
-      "updated_at": "2021-06-07T16:09:24.262Z",
-      "version": "WzI0MDIsMV0=",
+      "updated_at": "2021-06-08T09:06:07.808Z",
+      "version": "WzI0LDFd",
       "attributes": {
-        "title": "Total query time",
-        "visState": "{\"title\":\"Total query time\",\"type\":\"input_control_vis\",\"aggs\":[],\"params\":{\"controls\":[{\"id\":\"1623081954838\",\"fieldName\":\"xenit.totalElapsedTime\",\"parent\":\"\",\"label\":\"Total query time\",\"type\":\"range\",\"options\":{\"decimalPlaces\":0,\"step\":500},\"indexPatternRefName\":\"control_0_index_pattern\"}],\"updateFiltersOnChange\":false,\"useTimeFilter\":false,\"pinFilters\":false}}",
-        "uiStateJSON": "{}",
         "description": "",
-        "version": 1,
         "kibanaSavedObjectMeta": {
           "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
-        }
+        },
+        "title": "Total query time",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"Total query time\",\"type\":\"input_control_vis\",\"aggs\":[],\"params\":{\"controls\":[{\"id\":\"1623081954838\",\"fieldName\":\"xenit.totalElapsedTime\",\"parent\":\"\",\"label\":\"Total query time\",\"type\":\"range\",\"options\":{\"decimalPlaces\":0,\"step\":500},\"indexPatternRefName\":\"control_0_index_pattern\"}],\"updateFiltersOnChange\":false,\"useTimeFilter\":false,\"pinFilters\":false}}"
       },
       "references": [
         {
+          "id": "solrlogs-*",
           "name": "control_0_index_pattern",
-          "type": "index-pattern",
-          "id": "solrlogs-*"
+          "type": "index-pattern"
         }
       ],
       "migrationVersion": {
@@ -155,23 +155,23 @@
       "namespaces": [
         "default"
       ],
-      "updated_at": "2021-06-07T15:41:19.545Z",
-      "version": "WzE0MTUsMV0=",
+      "updated_at": "2021-06-08T09:06:06.785Z",
+      "version": "WzE3LDFd",
       "attributes": {
-        "title": "Properties count",
-        "visState": "{\"title\":\"Properties count\",\"type\":\"horizontal_bar\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"params\":{},\"schema\":\"metric\"},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"params\":{\"field\":\"xenit.queryProperties\",\"orderBy\":\"1\",\"order\":\"desc\",\"size\":50,\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"},\"schema\":\"group\"}],\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":false},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":200},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":75,\"filter\":true,\"truncate\":100},\"title\":{\"text\":\"Count\"}}],\"seriesParams\":[{\"show\":true,\"type\":\"histogram\",\"mode\":\"normal\",\"data\":{\"label\":\"Count\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"lineWidth\":2,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false,\"labels\":{},\"thresholdLine\":{\"show\":false,\"value\":10,\"width\":1,\"style\":\"full\",\"color\":\"#E7664C\"}}}",
-        "uiStateJSON": "{}",
         "description": "",
-        "version": 1,
         "kibanaSavedObjectMeta": {
           "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
-        }
+        },
+        "title": "Properties count",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"Properties count\",\"type\":\"horizontal_bar\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"params\":{},\"schema\":\"metric\"},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"params\":{\"field\":\"xenit.queryProperties\",\"orderBy\":\"1\",\"order\":\"desc\",\"size\":50,\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"},\"schema\":\"group\"}],\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":false},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":200},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":75,\"filter\":true,\"truncate\":100},\"title\":{\"text\":\"Count\"}}],\"seriesParams\":[{\"show\":true,\"type\":\"histogram\",\"mode\":\"normal\",\"data\":{\"label\":\"Count\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"lineWidth\":2,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false,\"labels\":{},\"thresholdLine\":{\"show\":false,\"value\":10,\"width\":1,\"style\":\"full\",\"color\":\"#E7664C\"}}}"
       },
       "references": [
         {
+          "id": "solrlogs-*",
           "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
-          "type": "index-pattern",
-          "id": "solrlogs-*"
+          "type": "index-pattern"
         }
       ],
       "migrationVersion": {
@@ -184,11 +184,11 @@
       "namespaces": [
         "default"
       ],
-      "updated_at": "2021-06-07T15:44:52.621Z",
-      "version": "WzE1MjQsMV0=",
+      "updated_at": "2021-06-08T09:10:15.025Z",
+      "version": "WzUzLDFd",
       "attributes": {
         "title": "Cumulative elapsed time",
-        "visState": "{\"title\":\"Cumulative elapsed time\",\"type\":\"area\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"params\":{\"field\":\"xenit.totalElapsedTime\",\"customLabel\":\"Total search time\"},\"schema\":\"metric\"},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"params\":{\"field\":\"xenit.queryProperties\",\"orderBy\":\"1\",\"order\":\"asc\",\"size\":50,\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Properties\"},\"schema\":\"segment\"}],\"params\":{\"type\":\"area\",\"grid\":{\"categoryLines\":false,\"valueAxis\":\"ValueAxis-1\"},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"filter\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Total search time\"}},{\"id\":\"ValueAxis-2\",\"name\":\"RightAxis-1\",\"type\":\"value\",\"position\":\"right\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Total numer of results found\"}}],\"seriesParams\":[{\"show\":true,\"type\":\"histogram\",\"mode\":\"normal\",\"data\":{\"label\":\"Total search time\",\"id\":\"1\"},\"drawLinesBetweenPoints\":true,\"lineWidth\":2,\"showCircles\":true,\"interpolate\":\"linear\",\"valueAxis\":\"ValueAxis-1\"}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false,\"thresholdLine\":{\"show\":false,\"value\":10,\"width\":1,\"style\":\"full\",\"color\":\"#E7664C\"},\"labels\":{\"show\":true},\"orderBucketsBySum\":true,\"radiusRatio\":24}}",
+        "visState": "{\"title\":\"Cumulative elapsed time\",\"type\":\"area\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"params\":{\"field\":\"xenit.totalElapsedTime\",\"customLabel\":\"Total search time\"},\"schema\":\"metric\"},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"params\":{\"field\":\"xenit.queryProperties\",\"orderBy\":\"1\",\"order\":\"asc\",\"size\":50,\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Properties\"},\"schema\":\"segment\"}],\"params\":{\"type\":\"area\",\"grid\":{\"categoryLines\":false,\"valueAxis\":\"ValueAxis-1\"},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"filter\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Total search time\"}},{\"id\":\"ValueAxis-2\",\"name\":\"RightAxis-1\",\"type\":\"value\",\"position\":\"right\",\"show\":false,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Total numer of results found\"}}],\"seriesParams\":[{\"show\":true,\"type\":\"histogram\",\"mode\":\"normal\",\"data\":{\"label\":\"Total search time\",\"id\":\"1\"},\"drawLinesBetweenPoints\":true,\"lineWidth\":2,\"showCircles\":true,\"interpolate\":\"linear\",\"valueAxis\":\"ValueAxis-1\"}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false,\"thresholdLine\":{\"show\":false,\"value\":10,\"width\":1,\"style\":\"full\",\"color\":\"#E7664C\"},\"labels\":{\"show\":true},\"orderBucketsBySum\":true,\"radiusRatio\":24}}",
         "uiStateJSON": "{}",
         "description": "",
         "version": 1,
@@ -213,11 +213,11 @@
       "namespaces": [
         "default"
       ],
-      "updated_at": "2021-06-07T15:44:08.374Z",
-      "version": "WzE0OTIsMV0=",
+      "updated_at": "2021-06-08T09:10:43.860Z",
+      "version": "WzY5LDFd",
       "attributes": {
         "title": "Cumulative number results",
-        "visState": "{\"title\":\"Cumulative number results\",\"type\":\"area\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"params\":{\"field\":\"json_message_solr_debug.totalNumFound\",\"customLabel\":\"Total number of results\"},\"schema\":\"metric\"},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"params\":{\"field\":\"json_message_solr_debug.parsedQuery.properties\",\"orderBy\":\"1\",\"order\":\"asc\",\"size\":5,\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Properties\"},\"schema\":\"segment\"}],\"params\":{\"type\":\"area\",\"grid\":{\"categoryLines\":false,\"valueAxis\":\"ValueAxis-1\"},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"filter\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Total number of results\"}},{\"id\":\"ValueAxis-2\",\"name\":\"RightAxis-1\",\"type\":\"value\",\"position\":\"right\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Total numer of results found\"}}],\"seriesParams\":[{\"show\":true,\"type\":\"histogram\",\"mode\":\"normal\",\"data\":{\"label\":\"Total number of results\",\"id\":\"1\"},\"drawLinesBetweenPoints\":true,\"lineWidth\":2,\"showCircles\":true,\"interpolate\":\"linear\",\"valueAxis\":\"ValueAxis-1\"}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false,\"thresholdLine\":{\"show\":false,\"value\":10,\"width\":1,\"style\":\"full\",\"color\":\"#E7664C\"},\"labels\":{\"show\":true},\"orderBucketsBySum\":true,\"radiusRatio\":24}}",
+        "visState": "{\"title\":\"Cumulative number results\",\"type\":\"area\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"params\":{\"field\":\"json_message_solr_debug.totalNumFound\",\"customLabel\":\"Total number of results\"},\"schema\":\"metric\"},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"params\":{\"field\":\"json_message_solr_debug.parsedQuery.properties\",\"orderBy\":\"1\",\"order\":\"asc\",\"size\":5,\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Properties\"},\"schema\":\"segment\"}],\"params\":{\"type\":\"area\",\"grid\":{\"categoryLines\":false,\"valueAxis\":\"ValueAxis-1\"},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"filter\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Total number of results\"}},{\"id\":\"ValueAxis-2\",\"name\":\"RightAxis-1\",\"type\":\"value\",\"position\":\"right\",\"show\":false,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Total numer of results found\"}}],\"seriesParams\":[{\"show\":true,\"type\":\"histogram\",\"mode\":\"normal\",\"data\":{\"label\":\"Total number of results\",\"id\":\"1\"},\"drawLinesBetweenPoints\":true,\"lineWidth\":2,\"showCircles\":true,\"interpolate\":\"linear\",\"valueAxis\":\"ValueAxis-1\"}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false,\"thresholdLine\":{\"show\":false,\"value\":10,\"width\":1,\"style\":\"full\",\"color\":\"#E7664C\"},\"labels\":{\"show\":true},\"orderBucketsBySum\":true,\"radiusRatio\":24}}",
         "uiStateJSON": "{}",
         "description": "",
         "version": 1,
@@ -242,28 +242,28 @@
       "namespaces": [
         "default"
       ],
-      "updated_at": "2021-06-07T15:49:18.139Z",
-      "version": "WzE1ODgsMV0=",
+      "updated_at": "2021-06-08T09:06:06.785Z",
+      "version": "WzIwLDFd",
       "attributes": {
-        "title": "Queries parsed",
-        "description": "",
-        "hits": 0,
         "columns": [
           "json_message_solr_debug.parsedQuery.properties",
           "json_message_solr_debug.totalElapsedTime",
           "json_message_solr_debug.totalNumFound"
         ],
-        "sort": [],
-        "version": 1,
+        "description": "",
+        "hits": 0,
         "kibanaSavedObjectMeta": {
           "searchSourceJSON": "{\"highlightAll\":true,\"version\":true,\"query\":{\"query\":\"xenit.extractionStatus:OK\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
-        }
+        },
+        "sort": [],
+        "title": "Queries parsed",
+        "version": 1
       },
       "references": [
         {
+          "id": "solrlogs-*",
           "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
-          "type": "index-pattern",
-          "id": "solrlogs-*"
+          "type": "index-pattern"
         }
       ],
       "migrationVersion": {
@@ -276,8 +276,8 @@
       "namespaces": [
         "default"
       ],
-      "updated_at": "2021-06-07T15:37:15.051Z",
-      "version": "WzEzMTEsMV0=",
+      "updated_at": "2021-06-08T09:09:21.541Z",
+      "version": "WzQzLDFd",
       "attributes": {
         "title": "solrlogs-*",
         "timeFieldName": "@timestamp",
