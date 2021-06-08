@@ -28,7 +28,6 @@ services:
 
   finder:
     image: hub.xenit.eu/alfred-finder/finder-app:2.2.0-rc.9
-    command: "nginx -g 'daemon off;'"
     container_name: finder
 
   solrlogs:
