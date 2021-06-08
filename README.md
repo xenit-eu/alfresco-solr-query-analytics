@@ -64,15 +64,15 @@ In an ansible setup, the post-start.sh will be done via ansible.
 
 3. Trigger some searches
 
-   	cd integration-tests/src/main/compose
-	./send_searches.sh
+        cd integration-tests/src/main/compose
+        ./send_searches.sh
 	
 4. Access kibana at localhost:5601 (username=elastic,password=changeme)
 
 Use discovery mode and explore using fields like
 
-    	xenit.totalElapsedTime
-	xenit.totalNumFound
+        xenit.totalElapsedTime
+        xenit.totalNumFound
         xenit.shard1.ElapsedTime
         xenit.shard1.NumFound
         xenit.queryString
