@@ -9,11 +9,12 @@ nexusStaging {
     password = System.env.PUBLISH_PASSWORD != null ? System.env.PUBLISH_PASSWORD : ''
 }
 
+
 subprojects {
     description = "Alfresco solr debugging"
 
     group = 'eu.xenit.alfresco'
-    version = "0.0.1"
+    version = '0.0.1' + getVersionQualifier(System.env.BRANCH_NAME ?: 'local')
 
     repositories {
         mavenCentral()
@@ -28,6 +29,16 @@ subprojects {
                 password property("eu.xenit.artifactory.password")
             }
         }
+    }
+}
+
+def String getVersionQualifier(String branch_name) {
+    if (project.hasProperty('qualifier')) {
+        return '-' + project.getProperty('qualifier')
+    } else if (branch_name == 'release') {
+        return ''
+    } else {
+        return '-SNAPSHOT'
     }
 }
 
