@@ -1152,7 +1152,15 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
                     s_logger.debug("Got: " + results.getNumberFound() + " in " + results.getQueryTime() + " ms");
                 } else {
                     JSONObject queryString = solrQueryParser.formatToQueryJson((String) body.get("query"));
-                    s_logger.debug("{\"parsedQuery\":" + queryString + ", \"track\":" + ((JSONObject)json.get("debug")).get("track") + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
+                    try {
+                        if (url.contains("&shards=")) {
+                            s_logger.debug("{\"parsedQuery\":" + queryString + ", \"track\":" + json.optJSONObject("debug").optJSONObject("track") + ", \"timing\":" + json.optJSONObject("debug").optJSONObject("timing") + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
+                        } else {
+                            s_logger.debug("{\"parsedQuery\":" + queryString + ", \"timing\":" + json.optJSONObject("debug").optJSONObject("timing") + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
+                        }
+                    } catch (Exception e) {
+                        s_logger.debug("{\"parsedQuery\":" + queryString + ", \"debugError\":" + e.getMessage() + "}");
+                    }
                 }
             }
             
