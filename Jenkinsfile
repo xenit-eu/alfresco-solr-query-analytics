@@ -1,7 +1,12 @@
 node {
+    def buildNr = "SNAPSHOT"
 
     stage("Checkout") {
         checkout scm
+
+        if (env.BRANCH_NAME == "release") {
+            buildNr = env.BUILD_NUMBER
+        }
     }
 
     try {
