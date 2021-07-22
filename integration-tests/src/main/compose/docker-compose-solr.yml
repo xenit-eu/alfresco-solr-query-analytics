@@ -1,0 +1,18 @@
+version: '2.2'
+
+services:
+  solr:
+    image: hub.xenit.eu/alfresco-enterprise/alfresco-solr6:1.4
+    container_name: solr
+    volumes:
+      - solr:/opt/alfresco/alf_data
+    environment:
+      - ALFRESCO_HOST=alfresco
+      - SOLR_HOST=localhost
+      - JAVA_XMS=512M
+      - JAVA_XMX=2048M
+      - SHARDING=false
+      - ALFRESCO_SSL=none
+
+volumes:
+  solr:

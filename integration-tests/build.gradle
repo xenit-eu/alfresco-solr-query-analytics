@@ -34,6 +34,14 @@ subprojects {
 
     dockerCompose {
         dockerComposeWorkingDirectory = "${project.parent.projectDir}/src/main/compose/"
+
+        useComposeFiles = ["docker-compose.yml",
+                           "docker-compose-sharded-solr.yml"]
+
+        nonSharded {
+            useComposeFiles = ["docker-compose.yml",
+                               "docker-compose-solr.yml"]
+        }
     }
 
 }
