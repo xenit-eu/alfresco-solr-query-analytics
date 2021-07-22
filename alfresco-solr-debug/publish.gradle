@@ -43,8 +43,8 @@ publishing {
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
 	    
             credentials {
-		username = System.env.PUBLISH_USER != null ? System.env.PUBLISH_USER : ''
-		password = System.env.PUBLISH_PASSWORD != null ? System.env.PUBLISH_PASSWORD : ''
+                username = project.findProperty('publish_username') ?: ''
+                password = project.findProperty('publish_password') ?: ''
             }
 	}
     }
