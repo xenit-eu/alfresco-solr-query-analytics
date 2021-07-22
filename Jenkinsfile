@@ -15,7 +15,7 @@ node {
                         usernameVariable: 'sonatypeUsername'
                 );
                 def gpgCredentials = string(credentialsId: 'gpgpassphrase', variable: 'gpgPassPhrase');
-                withCredentials(sonatypeCredentials, gpgCredentials) {
+                withCredentials([sonatypeCredentials, gpgCredentials]) {
                     sh "${gradleCommand} publish " +
                             " -PbuildNumber=${buildNr} " +
                             " -Ppublish_username=${sonatypeUsername} " +
