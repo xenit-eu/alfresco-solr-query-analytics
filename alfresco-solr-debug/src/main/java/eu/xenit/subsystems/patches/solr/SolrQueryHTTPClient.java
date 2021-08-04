@@ -106,6 +106,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.extensions.surf.util.I18NUtil;
 import util.SolrQueryParser;
+import util.SolrTimingParser;
 
 /**
  * @author Andy
@@ -159,6 +160,8 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
     }
 
     private SolrQueryParser solrQueryParser;
+
+    private SolrTimingParser solrTimingParser;
 
     public SolrQueryHTTPClient()
     {
@@ -1152,14 +1155,18 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
                     s_logger.debug("Got: " + results.getNumberFound() + " in " + results.getQueryTime() + " ms");
                 } else {
                     JSONObject queryString = solrQueryParser.formatToQueryJson((String) body.get("query"));
+
                     try {
+                        JSONObject timingJson = json.optJSONObject("debug").optJSONObject("timing");
+                        JSONObject timingInfo = solrTimingParser.transformTimingJson(timingJson);
                         if (url.contains("&shards=")) {
-                            s_logger.debug("{\"parsedQuery\":" + queryString + ", \"track\":" + json.optJSONObject("debug").optJSONObject("track") + ", \"timing\":" + json.optJSONObject("debug").optJSONObject("timing") + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
+                            s_logger.debug("{\"parsedQuery\":" + queryString + ", \"track\":" + json.optJSONObject("debug").optJSONObject("track") + ", \"timing\":" + timingInfo + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
                         } else {
-                            s_logger.debug("{\"parsedQuery\":" + queryString + ", \"timing\":" + json.optJSONObject("debug").optJSONObject("timing") + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
+                            s_logger.debug("{\"parsedQuery\":" + queryString + ", \"timing\":" + timingInfo + ",\"totalNumFound\":" + results.getNumberFound() + ",\"totalElapsedTime\":" + results.getQueryTime() + "}");
                         }
                     } catch (Exception e) {
                         s_logger.debug("{\"parsedQuery\":" + queryString + ", \"debugError\":" + e.getMessage() + "}");
+                        throw e;
                     }
                 }
             }
