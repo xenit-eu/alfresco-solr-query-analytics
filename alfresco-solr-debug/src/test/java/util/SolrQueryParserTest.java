@@ -190,6 +190,11 @@ public class SolrQueryParserTest {
     }
 
     @Test
+    public void aspectQuery() {
+        propertyMap.put("ASPECT", "\"cm:auditable\"");
+    }
+
+    @Test
     public void pathCombinationTest() {
         query = "((PATH:\"/app:company_home/st:sites/cm:test-site//*\" AND {http://www.alfresco.org/model/content/1.0}created:(\"NOW/DAY-1MONTH\"..\"NOW/DAY+1DAY\") AND {http://www.alfresco.org/model/content/1.0}creator:\"admin\") AND TYPE:\"cm:content\"";
         propertyMap.put("PATH","/app:company_home/st:sites/cm:test-site//*");
@@ -283,4 +288,5 @@ public class SolrQueryParserTest {
         propertyMap.put("{http://www.alfresco.org/model/content/1.0}content.mimetype",
                 "\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"");
     }
+
 }

@@ -59,6 +59,8 @@ public class SolrQueryParser {
             String pathRegex = ALLOWED_FTS_OPTIONS + "?(PATH):(.*)";
             //Example TEXT:"test"
             String textRegex = ALLOWED_FTS_OPTIONS + "?(TEXT):(.*)";
+            //Example ASPECT:"cm:auditable"
+            String aspectRegex = ALLOWED_FTS_OPTIONS + "?(ASPECT):(.*)";
             //Example {http://www.alfresco.org/model/content/1.0}created
             String qnamePropertyRegex = ALLOWED_FTS_OPTIONS + "?\\{([^\\s]*)\\}(" + ALLOWED_PROPERTY_CHARS + "*):(.*)";
             //Example cm:name:test
@@ -76,7 +78,10 @@ public class SolrQueryParser {
             } else if (keyword.matches(textRegex)) {
                 property = FULL_TEXT_PROPERTY;
                 value = keyword.replaceAll(textRegex, "$2");
-            } else if (keyword.matches(qnamePropertyRegex)) {
+            } else if (keyword.matches(aspectRegex)) {
+                property = keyword.replaceAll(aspectRegex, "$1");
+                value = keyword.replaceAll(aspectRegex, "$2");
+            }else if (keyword.matches(qnamePropertyRegex)) {
                 property = replaceNameSpaceToPrefix(keyword.replaceAll(qnamePropertyRegex, "$1")) + keyword.replaceAll(qnamePropertyRegex, "$2");;
                 value = keyword.replaceAll(qnamePropertyRegex, "$3");
             } else if (keyword.matches(formattedPropertyRegex)) {
