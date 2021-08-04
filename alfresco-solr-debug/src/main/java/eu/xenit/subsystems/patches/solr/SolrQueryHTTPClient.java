@@ -1166,7 +1166,6 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
                         }
                     } catch (Exception e) {
                         s_logger.debug("{\"parsedQuery\":" + queryString + ", \"debugError\":" + e.getMessage() + "}");
-                        throw e;
                     }
                 }
             }

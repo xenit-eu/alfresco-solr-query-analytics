@@ -38,6 +38,5 @@ public class SolrTimingParserTest {
         assertEquals(formattedJson.getLong("B"), 10);
         assertEquals(formattedJson.getLong("C"), 10);
         assertFalse(formattedJson.has("time"));
-        assertTrue(true);
     }
 }
