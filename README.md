@@ -53,7 +53,12 @@ Prerequisites:
         cd integration-tests/src/main/compose/
         docker-compose -f docker-compose-elk.yml up -d
 
-Once elasticsearch container started, run the *post-start.sh* script. This script takes care of the index lifetime management for the custom index where logs are being written, also of fields mapping for this index. The name of this index should be the same with the label `eu.xenit.index`.
+Once elasticsearch container started, run the *post-start.sh* script.
+
+        cd elasticsearch
+     	./post-start.sh
+
+This script takes care of the index lifetime management for the custom index where logs are being written, also of fields mapping for this index. The name of this index should be the same with the label `eu.xenit.index`.
 In an ansible setup, the post-start.sh will be done via ansible.
 
 

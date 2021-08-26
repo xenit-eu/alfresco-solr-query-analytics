@@ -14,7 +14,7 @@ subprojects {
     description = "Alfresco solr debugging"
 
     group = 'eu.xenit.alfresco'
-    version = '0.0.2' + getVersionQualifier(System.env.BRANCH_NAME ?: 'local')
+    version = '0.0.4' + getVersionQualifier(System.env.BRANCH_NAME ?: 'local')
 
     repositories {
         mavenCentral()
