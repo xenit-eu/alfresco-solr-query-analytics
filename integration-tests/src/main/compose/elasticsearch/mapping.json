@@ -860,7 +860,7 @@
 		},
 		"rewriteFacetParameters": {
 		    "type": "alias",
-		    "path": "json_message_solr_debug.timing.rewriteFaceParameters"
+		    "path": "json_message_solr_debug.timing.rewriteFacetParameters"
 		},
 		"setLocale": {
 		    "type": "alias",
