@@ -1,5 +1,5 @@
 node {
-    def buildNr = "SNAPSHOT"
+    def buildNr = "0.0.1"
 
     stage("Checkout") {
         checkout scm
