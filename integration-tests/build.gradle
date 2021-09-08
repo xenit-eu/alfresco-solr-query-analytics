@@ -7,13 +7,13 @@ subprojects {
     def edition = project.name.split("-")[1]
     apply from: "${project.projectDir}/overload.gradle"
 
-    description = "Alfresco ${alfrescoVersion} with solr debugging"
+    description = "Alfresco ${alfrescoVersion} with solr query analytics"
 
     apply plugin: 'eu.xenit.docker-alfresco'
     apply plugin: 'eu.xenit.docker-compose'    
 
     dependencies {
-        alfrescoAmp project(path: ":alfresco-solr-debug", configuration: "amp")
+        alfrescoAmp project(path: ":alfresco-solr-query-analytics", configuration: "amp")
         alfrescoAmp "eu.xenit.apix:apix-impl-61-amp:2.7.1@amp"
         alfrescoAmp "eu.xenit:alfresco-dynamic-extensions-repo-61:2.0.5@amp"
         alfrescoAmp "eu.xenit.alfresco:alfresco-hotfix-MNT-20557:1.0.2@amp"
@@ -27,7 +27,7 @@ subprojects {
         baseImage = "hub.xenit.eu/${namespace}/alfresco-${edition}:${alfrescoVersion}"
         leanImage = true
       }
-      repositories = ["hub.xenit.eu/private/alfresco-solr-debug"]
+      repositories = ["hub.xenit.eu/private/alfresco-solr-query-analytics"]
       tags = ["${version}-alfresco-${alfrescoVersion}"]
     }
 

@@ -10,14 +10,14 @@ publishing {
         }
 	all {
 	    pom {
-                url = 'https://bitbucket.com/xenit/alfresco-solr-debug'
-                name = "alfresco-solr-debug"
+                url = 'https:/github.com/xenit-eu/alfresco-solr-query-analytics'
+                name = "alfresco-solr-query-analytics"
 		description = "Creates an amp + jar for having Alfresco log more information from solr"
 		
                 scm {
                     connection = 'scm:git:git@bitbucket.com:xenit/alfresco-solr-debug.git'
                     developerConnection = 'scm:git:git@github.com:xenit-eu/alfresco-solr-debug.git'
-		    url = 'https://github.com/xenit-eu/alfresco-solr-debug.git'
+		    url = 'https://github.com/xenit-eu/alfresco-solr-query-analytics.git'
 		}
                 developers {
                     developer {

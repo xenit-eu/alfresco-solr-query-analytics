@@ -1,4 +1,4 @@
-include 'alfresco-solr-debug'
+include 'alfresco-solr-query-analytics'
 
 include ':integration-tests'
 ["61"].each { version ->
