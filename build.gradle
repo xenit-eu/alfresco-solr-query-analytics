@@ -11,7 +11,7 @@ nexusStaging {
 
 
 subprojects {
-    description = "Alfresco solr debugging"
+    description = "Alfresco solr query analytics"
 
     group = 'eu.xenit.alfresco'
     version = '0.0.4' + getVersionQualifier(System.env.BRANCH_NAME ?: 'local')
