@@ -3,6 +3,7 @@ subprojects {
 
     group = 'eu.xenit.alfresco'
     version = '0.0.4' + getVersionQualifier(System.env.BRANCH_NAME ?: 'local')
+    ext.isReleaseVersion = !(version.endsWith("SNAPSHOT"))
 
     repositories {
         mavenCentral()
