@@ -1,15 +1,3 @@
-plugins {
-    id 'io.codearte.nexus-staging' version '0.21.0'
-}
-
-
-nexusStaging {
-    packageGroup = 'eu.xenit'
-    username = System.env.PUBLISH_USER != null ? System.env.PUBLISH_USER : ''
-    password = System.env.PUBLISH_PASSWORD != null ? System.env.PUBLISH_PASSWORD : ''
-}
-
-
 subprojects {
     description = "Alfresco solr query analytics"
 

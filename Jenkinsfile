@@ -1,6 +1,4 @@
 node {
-    def buildNr = env.BUILD_NUMBER
-
     stage("Checkout") {
         checkout scm
     }
@@ -18,7 +16,6 @@ node {
                 def gpgCredentials = string(credentialsId: 'gpgpassphrase', variable: 'gpgPassPhrase');
                 withCredentials([sonatypeCredentials, gpgCredentials]) {
                     sh "${gradleCommand} publish " +
-                            " -PbuildNumber=${buildNr} " +
                             " -Ppublish_username=${sonatypeUsername} " +
                             " -Ppublish_password=${sonatypePassword} " +
                             " -PkeyId=DF8285F0 " +
