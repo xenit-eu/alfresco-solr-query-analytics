@@ -1,10 +1,9 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        library(MavenPublication) {
             from components.java
             artifact tasks.amp
         }
@@ -12,13 +11,13 @@ publishing {
             pom {
                     url = 'https:/github.com/xenit-eu/alfresco-solr-query-analytics'
                     name = "alfresco-solr-query-analytics"
-            description = "Creates an amp + jar for having Alfresco log more information from solr"
+                    description = "Creates an amp + jar for having Alfresco log more information from solr"
 
                     scm {
-                        connection = 'scm:git:git@bitbucket.com:xenit/alfresco-solr-debug.git'
-                        developerConnection = 'scm:git:git@github.com:xenit-eu/alfresco-solr-debug.git'
-                url = 'https://github.com/xenit-eu/alfresco-solr-query-analytics.git'
-            }
+                        connection = 'scm:git:git@github.com:xenit-eu/alfresco-solr-query-analytics.git'
+                        developerConnection = 'scm:git:git@github.com:xenit-eu/alfresco-solr-query-analytics.git'
+                       url = 'https://github.com/xenit-eu/alfresco-solr-query-analytics.git'	
+                    }
                     developers {
                         developer {
                             id = "xenit"
@@ -37,31 +36,20 @@ publishing {
     }
     
     repositories {
-        maven {
-                def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-                def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
-                url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-
-                credentials {
-                    username = project.findProperty('publish_username') ?: ''
-                    password = project.findProperty('publish_password') ?: ''
+        if (isReleaseVersion) {
+    	        sonatypeMavenCentral {
+        	  credentials {
+                    username = project.findProperty('sonatype_username')
+                    password = project.findProperty('sonatype_password')
                 }
+            }
+        } else {
+            sonatypeSnapshots {
+                credentials {
+                    username = project.findProperty('sonatype_username')
+                    password = project.findProperty('sonatype_password')
+                }
+            }
         }
-    }
-}
-
-signing {
-    sign publishing.publications.mavenJava
-}
-
-tasks.withType(Sign) {
-    onlyIf { isReleaseVersion }
-}
-
-gradle.taskGraph.whenReady { graph ->
-    if (graph.hasTask(publish)) {
-            ext."signing.keyId" = project.findProperty('keyId') != null ? project.findProperty('keyId') : ''
-            ext."signing.secretKeyRingFile" = project.findProperty('secretKeyRingFile') != null ?  project.findProperty('secretKeyRingFile') : ''
-            ext."signing.password" = project.findProperty('password') != null ? project.findProperty('password') : ''
     }
 }

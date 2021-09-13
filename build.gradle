@@ -7,17 +7,20 @@ subprojects {
 
     repositories {
         mavenCentral()
-        jcenter()
         maven {
             url 'https://artifacts.alfresco.com/nexus/content/repositories/public/'
         }
-        maven {
-            url 'https://artifactory.xenit.eu/artifactory/libs-release'
+	maven {
+            url 'https://artifacts.alfresco.com/nexus/content/groups/private'
             credentials {
-                username property("eu.xenit.artifactory.username")
-                password property("eu.xenit.artifactory.password")
+                username project.property('org.alfresco.maven.nexus.username')
+                password project.property('org.alfresco.maven.nexus.password')
             }
         }
+	// for alfresco's dependency org.vaadin.addons:dcharts-widget
+	maven {
+	   url 'https://maven.vaadin.com/vaadin-addons'
+	}
     }
 }
 
