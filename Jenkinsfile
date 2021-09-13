@@ -1,12 +1,6 @@
 node {
-    def buildNr = "SNAPSHOT"
-
     stage("Checkout") {
         checkout scm
-
-        if (env.BRANCH_NAME == "release") {
-            buildNr = env.BUILD_NUMBER
-        }
     }
 
     try {
@@ -22,12 +16,11 @@ node {
                 def gpgCredentials = string(credentialsId: 'gpgpassphrase', variable: 'gpgPassPhrase');
                 withCredentials([sonatypeCredentials, gpgCredentials]) {
                     sh "${gradleCommand} publish " +
-                            " -PbuildNumber=${buildNr} " +
-                            " -Ppublish_username=${sonatypeUsername} " +
-                            " -Ppublish_password=${sonatypePassword} " +
-                            " -PkeyId=DF8285F0 " +
-                            " -Ppassword=${gpgPassPhrase} " +
-                            " -PsecretKeyRingFile=/var/jenkins_home/secring.gpg "
+                            " -Psonatype_username=${sonatypeUsername} " +
+                            " -Psonatype_password=${sonatypePassword} " +
+                            " -Psigning.keyId=DF8285F0 " +
+                            " -Psigning.password=${gpgPassPhrase} " +
+                            " -Psigning.secretKeyRingFile=/var/jenkins_home/secring.gpg "
                 }
             }
         }

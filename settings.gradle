@@ -1,4 +1,8 @@
-include 'alfresco-solr-debug'
+plugins {
+    id "eu.xenit.enterprise-conventions.oss" version "0.2.0"
+}
+
+include 'alfresco-solr-query-analytics'
 
 include ':integration-tests'
 ["61"].each { version ->

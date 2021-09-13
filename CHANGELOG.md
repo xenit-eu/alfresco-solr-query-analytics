@@ -1,11 +1,14 @@
 ---
-title: Changelog - Alfresco Solr Debug
+title: Changelog - Alfresco Solr Query Analytics
 
-# Alfresco Solr Debug Changelog
+# Alfresco Solr Query Analytics Changelog
 
 ## Unreleased
 
+## v0.0.1 - 09-08-2021
+
 ### Added
+* [ETHIASSLA-400] Rename solr-debug into solr-query-analytics
 * [XENOPS-858, XENOPS-865] SolrTimingParser for parsing timing information. Dashboard.[#12][#13]	
 * [XENOPS-857] Support for non-sharded setups [#8]
 * [ETHIASSLA-355] Kibana dashboards for sharded setups and searched properties [#5]
