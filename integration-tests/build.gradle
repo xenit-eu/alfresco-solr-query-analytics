@@ -27,8 +27,6 @@ subprojects {
         baseImage = "hub.xenit.eu/${namespace}/alfresco-${edition}:${alfrescoVersion}"
         leanImage = true
       }
-      repositories = ["hub.xenit.eu/private/alfresco-solr-query-analytics"]
-      tags = ["${version}-alfresco-${alfrescoVersion}"]
     }
 
 
