@@ -642,6 +642,58 @@
 	},
 	"json_message_solr_debug": {
 	    "properties": {
+		"timing": {
+		    "properties": {
+			"clearLocale": {
+			    "type": "long"
+			},
+			"clustering": {
+			    "type": "long"
+			},
+			"consistencyComponent": {
+			    "type": "long"
+			},
+			"debug": {
+			    "type": "long"
+			},
+			"facet": {
+			    "type": "long"
+			},
+			"facet_module": {
+			    "type": "long"
+			},
+			"highlight": {
+			    "type": "long"
+			},
+			"mlt": {
+			    "type": "long"
+			},
+			"query": {
+			    "type": "long"
+			},
+			"rewriteFacetCounts": {
+			    "type": "long"
+			},
+			"rewriteFacetParameters": {
+			    "type": "long"
+			},
+			"setLocale": {
+			    "type": "long"
+			},
+			"setProcessedDenies": {
+			    "type": "long"
+			},
+			"spellcheck": {
+			    "type": "long"
+			},
+			"spellcheckbackcompat": {
+			    "type": "long"
+			},
+			"stats": {
+			    "type": "long"
+			}				
+		    }
+		},
 		"parsedQuery": {
 		    "properties": {
 			"extraction_status": {
@@ -682,7 +734,29 @@
 				    }
 				}
 			    }
-			}
+			},
+			"GET_FIELDS": {
+			    "properties": {
+				"http://shard1:8080/solr/shard1": {
+				    "properties": {
+					"ElapsedTime": { "type":"long"},
+					"NumFound": {"type":"long"},
+					"QTime": {"type":"long"},
+					"RequestPurpose": {"type":"keyword"},
+					"Response": {"type":"text"}
+				    }
+				},
+				"http://shard2:8080/solr/shard2": {
+				    "properties": {
+					"ElapsedTime": { "type":"long"},
+					"NumFound": {"type":"long"},
+					"QTime": {"type":"long"},
+					"RequestPurpose": {"type":"keyword"},
+					"Response": {"type":"text"}					
+				    }
+				}
+			    }
+			}			
 		    }
 		},
 		"totalNumFound": {
@@ -766,6 +840,70 @@
 	},
 	"xenit": {
 	    "properties": {
+		"clearLocale": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.clearLocale"		    
+		},
+		"clustering": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.clustering"
+		},
+		"consistencyComponent": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.consistencyComponent"
+		},
+		"debug": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.debug"
+		},
+		"facet": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.facet"
+		},
+		"facet_module": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.facet_module"
+		},
+		"highlight": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.highlight"
+		},
+		"mlt": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.mlt"
+		},
+		"query": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.query"
+		},
+		"rewriteFacetCounts": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.rewriteFacetCounts"
+		},
+		"rewriteFacetParameters": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.rewriteFacetParameters"
+		},
+		"setLocale": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.setLocale"
+		},
+		"setProcessedDenies": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.setProcessedDenies"
+		},
+		"spellcheck": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.spellcheck"
+		},
+		"spellcheckbackcompat": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.spellcheckbackcompat"
+		},
+		"stats": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.timing.stats"
+		},		
 		"totalNumFound": {
 		    "type": "alias",
 		    "path": "json_message_solr_debug.totalNumFound"		    
@@ -786,52 +924,112 @@
 		    "type": "alias",
 		    "path": "json_message_solr_debug.parsedQuery.extraction_status"		    		    
 		},
+		"rid": {
+		    "type": "alias",
+		    "path": "json_message_solr_debug.track.rid" 
+		},		
 		"shard1": {
 		    "properties": {
-			"ElapsedTime": {
-			    "type": "alias",
-			    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard1:8080/solr/shard1.ElapsedTime"
+			"execute_query": {
+			    "properties": {
+				"ElapsedTime": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard1:8080/solr/shard1.ElapsedTime"
+				},
+				"NumFound": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard1:8080/solr/shard1.NumFound"					
+				},
+				"QTime": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard1:8080/solr/shard1.QTime"					
+				},
+				"RequestPurpose": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard1:8080/solr/shard1.RequestPurpose"					
+				},
+				"Response": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard1:8080/solr/shard1.Response"					
+				}
+			    }
 			},
-			"NumFound": {
-			    "type": "alias",
-			    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard1:8080/solr/shard1.NumFound"					
-			},
-			"QTime": {
-			    "type": "alias",
-			    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard1:8080/solr/shard1.QTime"					
-			},
-			"RequestPurpose": {
-			    "type": "alias",
-			    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard1:8080/solr/shard1.RequestPurpose"					
-			},
-			"Response": {
-			    "type": "alias",
-			    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard1:8080/solr/shard1.Response"					
-			}
+			"get_fields": {
+			    "properties": {
+				"ElapsedTime": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.GET_FIELDS.http://shard1:8080/solr/shard1.ElapsedTime"
+				},
+				"NumFound": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.GET_FIELDS.http://shard1:8080/solr/shard1.NumFound"					
+				},
+				"QTime": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.GET_FIELDS.http://shard1:8080/solr/shard1.QTime"					
+				},
+				"RequestPurpose": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.GET_FIELDS.http://shard1:8080/solr/shard1.RequestPurpose"					
+				},
+				"Response": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.GET_FIELDS.http://shard1:8080/solr/shard1.Response"					
+				}
+			    }
+			}			
 		    }
 		},
 		"shard2": {
 		    "properties": {
-			"ElapsedTime": {
-			    "type": "alias",
-			    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard2:8080/solr/shard2.ElapsedTime"
+			"execute_query": {
+			    "properties": {			
+				"ElapsedTime": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard2:8080/solr/shard2.ElapsedTime"
+				},
+				"NumFound": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard2:8080/solr/shard2.NumFound"					
+				},
+				"QTime": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard2:8080/solr/shard2.QTime"					
+				},
+				"RequestPurpose": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard2:8080/solr/shard2.RequestPurpose"					
+				},
+				"Response": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard2:8080/solr/shard2.Response"					
+				}
+			    }
 			},
-			"NumFound": {
-			    "type": "alias",
-			    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard2:8080/solr/shard2.NumFound"					
-			},
-			"QTime": {
-			    "type": "alias",
-			    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard2:8080/solr/shard2.QTime"					
-			},
-			"RequestPurpose": {
-			    "type": "alias",
-			    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard2:8080/solr/shard2.RequestPurpose"					
-			},
-			"Response": {
-			    "type": "alias",
-			    "path": "json_message_solr_debug.track.EXECUTE_QUERY.http://shard2:8080/solr/shard2.Response"					
-			}
+			"get_fields": {
+			    "properties": {			
+				"ElapsedTime": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.GET_FIELDS.http://shard2:8080/solr/shard2.ElapsedTime"
+				},
+				"NumFound": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.GET_FIELDS.http://shard2:8080/solr/shard2.NumFound"					
+				},
+				"QTime": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.GET_FIELDS.http://shard2:8080/solr/shard2.QTime"					
+				},
+				"RequestPurpose": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.GET_FIELDS.http://shard2:8080/solr/shard2.RequestPurpose"					
+				},
+				"Response": {
+				    "type": "alias",
+				    "path": "json_message_solr_debug.track.GET_FIELDS.http://shard2:8080/solr/shard2.Response"					
+				}
+			    }
+			}			
 		    }
 		}				
 		

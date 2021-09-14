@@ -1,34 +1,26 @@
-plugins {
-    id 'io.codearte.nexus-staging' version '0.21.0'
-}
-
-
-nexusStaging {
-    packageGroup = 'eu.xenit'
-    username = System.env.PUBLISH_USER != null ? System.env.PUBLISH_USER : ''
-    password = System.env.PUBLISH_PASSWORD != null ? System.env.PUBLISH_PASSWORD : ''
-}
-
-
 subprojects {
-    description = "Alfresco solr debugging"
+    description = "Alfresco solr query analytics"
 
     group = 'eu.xenit.alfresco'
-    version = '0.0.2' + getVersionQualifier(System.env.BRANCH_NAME ?: 'local')
+    version = '0.0.1' + getVersionQualifier(System.env.BRANCH_NAME ?: 'local')
+    ext.isReleaseVersion = !(version.endsWith("SNAPSHOT"))
 
     repositories {
         mavenCentral()
-        jcenter()
         maven {
             url 'https://artifacts.alfresco.com/nexus/content/repositories/public/'
         }
-        maven {
-            url 'https://artifactory.xenit.eu/artifactory/libs-release'
+	maven {
+            url 'https://artifacts.alfresco.com/nexus/content/groups/private'
             credentials {
-                username property("eu.xenit.artifactory.username")
-                password property("eu.xenit.artifactory.password")
+                username project.property('org.alfresco.maven.nexus.username')
+                password project.property('org.alfresco.maven.nexus.password')
             }
         }
+	// for alfresco's dependency org.vaadin.addons:dcharts-widget
+	maven {
+	   url 'https://maven.vaadin.com/vaadin-addons'
+	}
     }
 }
 

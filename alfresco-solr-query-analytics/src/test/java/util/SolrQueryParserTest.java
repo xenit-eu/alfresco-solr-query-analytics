@@ -52,7 +52,7 @@ public class SolrQueryParserTest {
         Set<String> formattedPropertySet = new HashSet<>();
         for (String property : propertyMap.keySet()){
             if (shouldBeExtracted(property)) {
-                formattedPropertySet.add(removeLuceneQueryOptions(solrQueryParser.removeIllegalChars(property)));
+                formattedPropertySet.add(removeLuceneQueryOptions(solrQueryParser.escapeIllegalChars(property)));
             }
         }
         for (String property : extractedProperties){
@@ -190,6 +190,11 @@ public class SolrQueryParserTest {
     }
 
     @Test
+    public void aspectQuery() {
+        propertyMap.put("ASPECT", "\"cm:auditable\"");
+    }
+
+    @Test
     public void pathCombinationTest() {
         query = "((PATH:\"/app:company_home/st:sites/cm:test-site//*\" AND {http://www.alfresco.org/model/content/1.0}created:(\"NOW/DAY-1MONTH\"..\"NOW/DAY+1DAY\") AND {http://www.alfresco.org/model/content/1.0}creator:\"admin\") AND TYPE:\"cm:content\"";
         propertyMap.put("PATH","/app:company_home/st:sites/cm:test-site//*");
@@ -239,6 +244,14 @@ public class SolrQueryParserTest {
     }
 
     @Test
+    public void rangeQueryTest() {
+        String refactoredRange = solrQueryParser.refactorRange("cm:modified:[1972-05-20T17:33:18.772Z TO 2072-05-20T17:33:18.772Z]");
+        String property = "cm:modified:";
+        assertTrue(refactoredRange.contains(property));
+        assertFalse(refactoredRange.substring(property.length()).contains(":"));
+    }
+
+    @Test
     public void advancedQueryTest() {
         //Real Finder Query
         query = "((({http://www.alfresco.org/model/content/1.0}creator:\"test\" AND" +
@@ -283,4 +296,23 @@ public class SolrQueryParserTest {
         propertyMap.put("{http://www.alfresco.org/model/content/1.0}content.mimetype",
                 "\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"");
     }
+
+    @Test
+    public void testShareQuery(){
+        query = "+@cm\\:modified:[2021\\-7\\-27T00\\:00\\:00.000 TO 2021\\-8\\-3T23\\:59\\:59.999] " +
+                "+@cm\\:modifier:\"admin\" +TYPE:\"cm:content\" -TYPE:\"cm:systemfolder\" " +
+                "-TYPE:\"fm:forums\" -TYPE:\"fm:forum\" -TYPE:\"fm:topic\" -TYPE:\"fm:post\" " +
+                "+(TYPE:\"content\" OR TYPE:\"app:filelink\" OR TYPE:\"folder\")";
+        propertyMap.put("cm:modified","[2021\\-7\\-27T00\\:00\\:00.000 TO 2021\\-8\\-3T23\\:59\\:59.999]");
+        propertyMap.put("cm:modifier","\"admin\"");
+        propertyMap.put("TYPE","\"cm:content\"");
+    }
+
+    @Test
+    public void testLuceneQuery() {
+        query = "+@cm\\:modified:[NOW/DAY-7DAYS TO NOW/DAY+1DAY] +TYPE:\"cm:content\"";
+        propertyMap.put("cm:modified","[NOW/DAY-7DAYS TO NOW/DAY+1DAY]");
+        propertyMap.put("TYPE", "\"cm:content\"");
+    }
+
 }

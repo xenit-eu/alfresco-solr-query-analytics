@@ -27,7 +27,7 @@ public class SolrQueryParser {
 
     public JSONObject formatToQueryJson(String query) {
         JSONObject json = new JSONObject();
-        json.put("queryString", removeIllegalChars(query));
+        json.put("queryString", escapeIllegalChars(query));
         try {
             json.put("properties", extractProperties(query));
             json.put("extraction_status", "OK");
@@ -41,9 +41,9 @@ public class SolrQueryParser {
     public Set<String> extractProperties(String query) {
         HashMap<String, String> propertyMap = new HashMap<>();
         logger.debug("Extracting properties from query = " + query);
-        query = removeIllegalChars(query);
+        query = escapeIllegalChars(query);
         query = removeLeadingSpacesAfterProperty(query);
-        query = replaceTO(query);
+        query = refactorRange(query);
         query = removeSpacesFromExactQueries(query);
         query = removeANDOR(query);
         query = removeNOTProperties(query);
@@ -59,8 +59,12 @@ public class SolrQueryParser {
             String pathRegex = ALLOWED_FTS_OPTIONS + "?(PATH):(.*)";
             //Example TEXT:"test"
             String textRegex = ALLOWED_FTS_OPTIONS + "?(TEXT):(.*)";
+            //Example ASPECT:"cm:auditable"
+            String aspectRegex = ALLOWED_FTS_OPTIONS + "?(ASPECT):(.*)";
             //Example {http://www.alfresco.org/model/content/1.0}created
             String qnamePropertyRegex = ALLOWED_FTS_OPTIONS + "?\\{([^\\s]*)\\}(" + ALLOWED_PROPERTY_CHARS + "*):(.*)";
+            //Example +@cm\:modified:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]
+            String escapedPropertyRegex = ALLOWED_FTS_OPTIONS + "?@([^\\s]*)\\\\\\\\:([^\\s]*):(.*)";
             //Example cm:name:test
             String formattedPropertyRegex = ALLOWED_FTS_OPTIONS + "?(.*):(.*):(.*)";
 
@@ -76,9 +80,15 @@ public class SolrQueryParser {
             } else if (keyword.matches(textRegex)) {
                 property = FULL_TEXT_PROPERTY;
                 value = keyword.replaceAll(textRegex, "$2");
+            } else if (keyword.matches(aspectRegex)) {
+                property = keyword.replaceAll(aspectRegex, "$1");
+                value = keyword.replaceAll(aspectRegex, "$2");
             } else if (keyword.matches(qnamePropertyRegex)) {
                 property = replaceNameSpaceToPrefix(keyword.replaceAll(qnamePropertyRegex, "$1")) + keyword.replaceAll(qnamePropertyRegex, "$2");;
                 value = keyword.replaceAll(qnamePropertyRegex, "$3");
+            } else if (keyword.matches(escapedPropertyRegex) ) {
+                property = keyword.replaceAll(escapedPropertyRegex, "$1:$2");
+                value = keyword.replaceAll(escapedPropertyRegex, "$3");
             } else if (keyword.matches(formattedPropertyRegex)) {
                 property = keyword.replaceAll(formattedPropertyRegex, "$1:$2");
                 value = keyword.replaceAll(formattedPropertyRegex, "$3");
@@ -102,7 +112,7 @@ public class SolrQueryParser {
         return "{" + nameSpaceURI + "}";
     }
 
-    public String removeIllegalChars(String query) {
+    public String escapeIllegalChars(String query) {
         return (new org.json.simple.JSONObject()).escape(query);
     }
 
@@ -181,8 +191,15 @@ public class SolrQueryParser {
         return query.replaceAll("[(|)]", "");
     }
 
-    private String replaceTO(String query) {
-        return query.replaceAll("\\s+TO\\s+", "..");
+    public String refactorRange(String query) {
+        Pattern rangeRegex = Pattern.compile("(\\[.*)\\s+TO\\s+(.*\\])");
+        Matcher matcher = rangeRegex.matcher(query);
+        if (matcher.find()) {
+            String refactoredRange = matcher.group(1).replaceAll(":" , "-") + ".." + matcher.group(2).replaceAll(":" , "-");
+            return query.replaceAll(rangeRegex.toString(), refactoredRange);
+        } else {
+            return query;
+        }
     }
 
     public void setNamespaceService(NamespaceService namespaceService) {
