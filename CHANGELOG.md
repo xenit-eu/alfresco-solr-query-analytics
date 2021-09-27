@@ -5,6 +5,10 @@ title: Changelog - Alfresco Solr Query Analytics
 
 ## Unreleased
 
+### Added
+* [ETHIASSLA-422] Custom appender for log rotation
+Fix publishing via github actions.
+
 ## v0.0.1 - 09-08-2021
 
 ### Added

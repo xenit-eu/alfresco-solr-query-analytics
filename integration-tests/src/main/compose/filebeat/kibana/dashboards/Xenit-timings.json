@@ -18,7 +18,7 @@
                 "version": 1,
                 "timeRestore": false,
                 "kibanaSavedObjectMeta": {
-                    "searchSourceJSON": "{\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"controlledBy\":\"1622726501328\",\"disabled\":false,\"key\":\"xenit.queryProperties\",\"negate\":false,\"params\":{\"query\":\"cm:name\"},\"type\":\"phrase\",\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\"},\"query\":{\"match_phrase\":{\"xenit.queryProperties\":\"cm:name\"}}}]}"
+                    "searchSourceJSON": "{\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"filter\":[]}"
                 }
             },
             "references": [
