@@ -1,0 +1,27 @@
+name: build
+on:
+  push:
+  pull_request:
+
+env:
+  ORG_GRADLE_PROJECT_alfresco_nexus_username: ${{ secrets.ALFRESCO_NEXUS_USERNAME }}
+  ORG_GRADLE_PROJECT_alfresco_nexus_password: ${{ secrets.ALFRESCO_NEXUS_PASSWORD }}
+  
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(github.ref, 'refs/heads/master') || startswith(github.ref, 'refs/heads/release') }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Publish
+        env:
+          SIGNING_PRIVATE_KEY: ${{ secrets.MAVEN_CENTRAL_GPG_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.MAVEN_CENTRAL_GPG_PASSWORD }}
+          ORG_GRADLE_PROJECT_sonatype_username: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_sonatype_password: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+        run: ./gradlew publish
