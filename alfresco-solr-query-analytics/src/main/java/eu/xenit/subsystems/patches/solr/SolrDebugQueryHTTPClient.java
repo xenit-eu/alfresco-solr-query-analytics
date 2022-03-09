@@ -40,6 +40,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.Set;
 import java.util.StringJoiner;
 
@@ -58,7 +59,13 @@ import org.alfresco.repo.search.impl.lucene.LuceneQueryParserException;
 import org.alfresco.repo.search.impl.lucene.SolrJSONResultSet;
 import org.alfresco.repo.search.impl.lucene.SolrJsonProcessor;
 import org.alfresco.repo.search.impl.lucene.SolrStatsResult;
-import org.alfresco.repo.search.impl.solr.*;
+import org.alfresco.repo.search.impl.solr.AbstractSolrQueryHTTPClient;
+import org.alfresco.repo.search.impl.solr.ExplicitSolrStoreMappingWrapper;
+import org.alfresco.repo.search.impl.solr.SolrClientUtil;
+import org.alfresco.repo.search.impl.solr.SolrQueryClient;
+import org.alfresco.repo.search.impl.solr.SolrStoreMapping;
+import org.alfresco.repo.search.impl.solr.SolrStoreMappingWrapper;
+import org.alfresco.repo.search.impl.solr.SpellCheckDecisionManager;
 import org.alfresco.repo.tenant.TenantService;
 import org.alfresco.service.cmr.dictionary.DataTypeDefinition;
 import org.alfresco.service.cmr.dictionary.DictionaryService;
@@ -111,9 +118,9 @@ import util.SolrTimingParser;
 /**
  * @author Andy
  */
-public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements SolrQueryClient
+public class SolrDebugQueryHTTPClient extends AbstractSolrQueryHTTPClient implements SolrQueryClient
 {
-    static Log s_logger = LogFactory.getLog(SolrQueryHTTPClient.class);
+    static Log s_logger = LogFactory.getLog(SolrDebugQueryHTTPClient.class);
 
     private DictionaryService dictionaryService;
 
@@ -153,17 +160,28 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
 
     private PermissionService permissionService;
 
-    private boolean useSolrDebug = false;
+    private Properties globalProperties;
 
-    public void setUseSolrDebug(boolean useSolrDebug) {
-        this.useSolrDebug = useSolrDebug;
+    public void setGlobalProperties(Properties globalProperties) {
+        this.globalProperties = globalProperties;
+    }
+
+    public Properties getGlobalProperties() {
+        return globalProperties;
+    }
+
+    public boolean isUseSolrDebug() {
+        if (globalProperties == null) {
+            return false;
+        }
+        return Boolean.TRUE.equals(Boolean.valueOf(globalProperties.getProperty("solr.useDebug")));
     }
 
     private SolrQueryParser solrQueryParser;
 
     private SolrTimingParser solrTimingParser;
 
-    public SolrQueryHTTPClient()
+    public SolrDebugQueryHTTPClient()
     {
     }
 
@@ -458,7 +476,7 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
             url.append("?wt=").append(encoder.encode("json", "UTF-8"));
             url.append("&fl=").append(encoder.encode("DBID,score", "UTF-8"));
 
-            if(useSolrDebug) {
+            if(isUseSolrDebug()) {
                 url.append("&debugQuery=on");
             }
 
@@ -1149,7 +1167,8 @@ public class SolrQueryHTTPClient extends AbstractSolrQueryHTTPClient implements 
 
             if (s_logger.isDebugEnabled())
             {
-                if(!useSolrDebug) {
+                if(!isUseSolrDebug()) {
+                    s_logger.debug("Legacy solr logging:");
                     s_logger.debug("Sent :" + url);
                     s_logger.debug("   with: " + body.toString());
                     s_logger.debug("Got: " + results.getNumberFound() + " in " + results.getQueryTime() + " ms");

@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="search.solrQueryHTTPCLient" class="eu.xenit.subsystems.patches.solr.SolrQueryHTTPClient" init-method="init">
+    <bean id="search.solrQueryHTTPCLient" class="eu.xenit.subsystems.patches.solr.SolrDebugQueryHTTPClient" init-method="init">
         <property name="nodeService">
             <ref bean="mlAwareNodeService" />
         </property>
@@ -51,10 +51,10 @@
         <property name="defaultUnshardedFacetLimit" value="${solr.defaultUnshardedFacetLimit}"/>
         <property name="defaultShardedFacetLimit" value="${solr.defaultShardedFacetLimit}"/>
         <property name="useDynamicShardRegistration" value="${solr.useDynamicShardRegistration}"/>
-        <property name="useSolrDebug" value="${solr.useDebug}"/>
         <property name="solrQueryParser">
             <ref bean="SolrQueryParser" />
         </property>
+        <property name="globalProperties" ref="global-properties"/>
     </bean>
 
 </beans>
