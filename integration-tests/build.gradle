@@ -17,6 +17,7 @@ subprojects {
         alfrescoAmp "eu.xenit.apix:apix-impl-61-amp:2.7.1@amp"
         alfrescoAmp "eu.xenit:alfresco-dynamic-extensions-repo-61:2.0.5@amp"
         alfrescoAmp "eu.xenit.alfresco:alfresco-hotfix-MNT-20557:1.0.2@amp"
+        alfrescoAmp "eu.xenit.care4alf:care4alf-6x:${care4alfVersion}@amp"
 
         baseAlfrescoWar "org.alfresco:${alfrescoArtifactId}:${alfrescoVersion}@war"
     }

@@ -2,4 +2,5 @@ ext {
     alfrescoVersion = '6.1.1.2'
     alfrescoVersionShort = '61'
     alfrescoArtifactId = 'content-services'
+    care4alfVersion = '2.3.0'
 }
