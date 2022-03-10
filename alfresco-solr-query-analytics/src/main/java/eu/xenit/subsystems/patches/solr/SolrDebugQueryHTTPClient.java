@@ -1165,7 +1165,7 @@ public class SolrDebugQueryHTTPClient extends AbstractSolrQueryHTTPClient implem
 
             JSONResult results = jsonProcessor.getResult(json);
 
-            if (s_logger.isDebugEnabled())
+            if (s_logger.isDebugEnabled() && !body.optString("query","missing-query").strip().equals("abeecher"))
             {
                 if(!isUseSolrDebug()) {
                     s_logger.debug("Legacy solr logging:");
