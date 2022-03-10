@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
 <beans>
-    <bean id="SolrQueryParser" class="util.SolrQueryParser">
+    <bean id="SolrQueryParser" class="eu.xenit.util.SolrQueryParser">
         <property name="namespaceService">
             <ref bean="namespaceService" />
         </property>

@@ -112,8 +112,8 @@ import org.json.JSONTokener;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.extensions.surf.util.I18NUtil;
-import util.SolrQueryParser;
-import util.SolrTimingParser;
+import eu.xenit.util.SolrQueryParser;
+import eu.xenit.util.SolrTimingParser;
 
 /**
  * @author Andy
@@ -1165,7 +1165,7 @@ public class SolrDebugQueryHTTPClient extends AbstractSolrQueryHTTPClient implem
 
             JSONResult results = jsonProcessor.getResult(json);
 
-            if (s_logger.isDebugEnabled())
+            if (s_logger.isDebugEnabled() && !body.optString("query","missing-query").strip().equals("abeecher"))
             {
                 if(!isUseSolrDebug()) {
                     s_logger.debug("Legacy solr logging:");
