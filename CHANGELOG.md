@@ -6,7 +6,7 @@ title: Changelog - Alfresco Solr Query Analytics
 ## v0.0.3 - 10-03-2022
 
 ### Added
-* [ALFREDOPS-814] Disable logging for search check
+* [ALFREDOPS-814] Disable logging for search check[#20]
 
 ### Changed
 * [ALFREDOPS-813] Refactor to SolrDebugQueryHTTPClient[#19]
@@ -32,5 +32,6 @@ Fix publishing via github actions.
 [#12]: https://github.com/xenit-eu/alfresco-solr-debug/pull/12
 [#13]: https://github.com/xenit-eu/alfresco-solr-debug/pull/13
 [#19]: https://github.com/xenit-eu/alfresco-solr-debug/pull/19
+[#20]: https://github.com/xenit-eu/alfresco-solr-debug/pull/20
 
 
