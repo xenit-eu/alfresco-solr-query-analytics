@@ -112,8 +112,8 @@ import org.json.JSONTokener;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.extensions.surf.util.I18NUtil;
-import util.SolrQueryParser;
-import util.SolrTimingParser;
+import eu.xenit.util.SolrQueryParser;
+import eu.xenit.util.SolrTimingParser;
 
 /**
  * @author Andy

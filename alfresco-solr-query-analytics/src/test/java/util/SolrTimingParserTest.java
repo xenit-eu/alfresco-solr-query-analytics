@@ -1,5 +1,6 @@
 package util;
 
+import eu.xenit.util.SolrTimingParser;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 

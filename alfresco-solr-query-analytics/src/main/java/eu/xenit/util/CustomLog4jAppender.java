@@ -1,4 +1,4 @@
-package util;
+package eu.xenit.util;
 
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Layout;
