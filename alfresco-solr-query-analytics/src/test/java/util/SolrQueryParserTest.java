@@ -316,4 +316,10 @@ public class SolrQueryParserTest {
         propertyMap.put("TYPE", "\"cm:content\"");
     }
 
+    @Test
+    public void testEscapedQuery() {
+        query = "={http:\\/\\/www.alfresco.org\\/model\\/content/1.0}name:\"Out\"";
+        propertyMap.put("{http://www.alfresco.org/model/content/1.0}name","Out");
+    }
+
 }

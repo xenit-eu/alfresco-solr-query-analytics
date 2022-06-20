@@ -3,6 +3,12 @@ title: Changelog - Alfresco Solr Query Analytics
 
 # Alfresco Solr Query Analytics Changelog
 
+## v0.0.4 - 20-06-2022
+
+### Added
+* [ALFREDOPS-830] Escaped query handling[#21]
+
+
 ## v0.0.3 - 10-03-2022
 
 ### Added
