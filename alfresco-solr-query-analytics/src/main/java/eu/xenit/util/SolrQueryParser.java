@@ -17,7 +17,7 @@ public class SolrQueryParser {
     public static final String FULL_TEXT_PROPERTY = "FullText";
     public final String QUERY_OPTIONS_REGEX = "\\*|\\?";
     public final String ALLOWED_PROPERTY_CHARS = "[\\w|\\.]";
-    public final String ALLOWED_FTS_OPTIONS = "[\\-|\\!|\\+|\\~|\\^]";
+    public final String ALLOWED_FTS_OPTIONS = "[\\-|\\!|\\+|\\~|\\^|=]";
 
     private NamespaceService namespaceService;
 
@@ -113,6 +113,8 @@ public class SolrQueryParser {
     }
 
     public String escapeIllegalChars(String query) {
+        // Avoid already escaped forward slashes being escaped again
+        query = query.replaceAll("\\\\/","/");
         return (new org.json.simple.JSONObject()).escape(query);
     }
 
