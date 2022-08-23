@@ -5,6 +5,6 @@ plugins {
 include 'alfresco-solr-query-analytics'
 
 include ':integration-tests'
-["61"].each { version ->
+["61","62"].each { version ->
     include ":integration-tests:alfresco-enterprise-${version}"
 }

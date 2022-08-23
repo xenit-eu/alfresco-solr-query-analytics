@@ -1,0 +1,9 @@
+ext {
+    alfrescoVersion = '6.2.2.19'
+    alfrescoVersionShort = '62'
+    alfrescoArtifactId = 'content-services'
+
+    care4alfAmpVersion = 'eu.xenit.care4alf:care4alf-6x:2.4.0@amp'
+    dynamicExtensionsAmpVersion = 'eu.xenit:alfresco-dynamic-extensions-repo-62:2.1.1@amp'
+    apixImplAmpVersion = 'eu.xenit.apix:apix-impl-62-amp:3.0.1@amp'
+}
