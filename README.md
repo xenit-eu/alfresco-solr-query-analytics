@@ -62,10 +62,16 @@ This script takes care of the index lifetime management for the custom index whe
 In an ansible setup, the post-start.sh will be done via ansible.
 
 
-2. Start alfresco and solr
 
-        ./gradlew integration-tests:alfresco-enterprise-61:cU
+3. (optional) check supported alfresco versions
 
+           ./gradlew integration-tests:projects
+    
+
+4. Start alfresco (with a specific version, eg 62) and solr
+
+           ./gradlew integration-tests:alfresco-enterprise-{version}:cU
+    
 
 3. Trigger some searches
 
