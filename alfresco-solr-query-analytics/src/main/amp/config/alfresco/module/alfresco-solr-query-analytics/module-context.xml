@@ -3,7 +3,26 @@
 <beans>
     <bean id="SolrQueryParser" class="eu.xenit.util.SolrQueryParser">
         <property name="namespaceService">
-            <ref bean="namespaceService" />
+            <ref bean="namespaceService"/>
         </property>
     </bean>
+
+        <bean id="DebugSolrQueryHTTPClientAdvisor" class="eu.xenit.alfresco.instrumentation.solr.DebugSolrQueryHTTPClientAdvisor">
+            <constructor-arg>
+                <ref bean="global-properties"/>
+            </constructor-arg>>
+            <constructor-arg>
+                <ref bean="searchServiceSubsystemProxy"/>
+            </constructor-arg>>
+            <constructor-arg>
+                <ref bean="SolrQueryParser"/>
+            </constructor-arg>>
+        </bean>
+
+    <bean id="DebugSolrQueryHTTPClientAdvisor"
+            class="eu.xenit.alfresco.instrumentation.solr.DebugSolrQueryHTTPClientAdvisor"
+        autowire="constructor" >
+    </bean> -->
+
 </beans>
+

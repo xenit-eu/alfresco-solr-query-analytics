@@ -33,6 +33,7 @@ public class DebugSolrQueryHTTPClientAdvisor {
 		this.solrQueryParser = solrQueryParser;
 
 		final Method debugMethod = ReflectionUtils.findMethod(SolrJSONResultSet.class, "getResponseBodyAsJSONObject");
+
 		if (isUseSolrDebug() && debugMethod != null) {
 
 			bean.addAdvisor(new DefaultPointcutAdvisor(new MethodInterceptor() {
