@@ -812,5 +812,20 @@ public class SolrJSONResultSet implements ResultSet, JSONResult
     {
         return facetRanges;
     }
-    
+
+    /**
+     * This is specially crafted function added onto the original class.
+     * This function is needed to retrieve the JSON (debug) payload for analytics
+     * We will use AOP to access this functionality, please see {@link DebugSolrQueryHTTPClientAdvisor }  for the execution.
+     * This class will overtake the original SolrJSONResultSet on the classpath, extreme caution is waranted when changing versions,
+     * As we cannot predict changes in the original file.
+     */
+    public JSONObject getResponseBodyAsJSONObject() {
+
+        logger.debug("Entering customized SolrJsonResultSet.class code");
+        //TODO change class to store SolrJSONResultSet from the constructure in a local var and return it here?
+
+        //TODO
+        return new JSONObject("{\"test\": \"yes\"}");
+    }
 }
