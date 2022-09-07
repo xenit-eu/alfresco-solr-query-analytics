@@ -49,5 +49,3 @@ def copyPropertyValueIfExists(sourcePropertyName, targetPropertyName) {
         project.ext[targetPropertyName] = project.property(sourcePropertyName)
     }
 }
-
-
