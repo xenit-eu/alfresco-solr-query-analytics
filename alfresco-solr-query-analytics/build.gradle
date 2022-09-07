@@ -17,4 +17,12 @@ test {
     useJUnitPlatform()
 }
 
+sourceSets {
+    main {
+        amp {
+            config.srcDir(compileJava)
+        }
+    }
+}
+
 apply from: "publish.gradle"

@@ -117,7 +117,11 @@ public class SolrJSONResultSet implements ResultSet, JSONResult
     private SpellCheckResult spellCheckResult;
     
     private boolean processedDenies;
-    
+
+
+     //adding this class variable (on top of the vanilla class) so we can temporarily store the return payload to parse it via our AOP implementation.
+    private JSONObject response;
+
     /**
      * Detached result set based on that provided
      * @param json JSONObject
@@ -137,8 +141,9 @@ public class SolrJSONResultSet implements ResultSet, JSONResult
             JSONObject responseHeader = json.getJSONObject("responseHeader");
             status = responseHeader.getLong("status");
             queryTime = responseHeader.getLong("QTime");
-            
-            JSONObject response = json.getJSONObject("response");
+
+            //instead of the local "response" variable, this is now the class variable (as opposed to vanilla)
+            response = json.getJSONObject("response");
             numberFound = response.getLong("numFound");
             start = response.getLong("start");
             Double d = response.getDouble("maxScore");
@@ -823,9 +828,7 @@ public class SolrJSONResultSet implements ResultSet, JSONResult
     public JSONObject getResponseBodyAsJSONObject() {
 
         logger.debug("Entering customized SolrJsonResultSet.class code");
-        //TODO change class to store SolrJSONResultSet from the constructure in a local var and return it here?
 
-        //TODO
-        return new JSONObject("{\"test\": \"yes\"}");
+        return response;
     }
 }
