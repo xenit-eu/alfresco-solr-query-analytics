@@ -59,7 +59,7 @@ public class DebugSolrQueryHTTPClientAdvisor {
                             if (resultSet instanceof JSONResult) {
                                 JSONObject timingJson = jsonResponse.optJSONObject("debug").optJSONObject("timing");
                                 JSONObject timingInfo = SolrTimingParser.transformTimingJson(timingJson);
-                                if (extraParameters.containsKey("shards")) {
+                                if (jsonResponse.optJSONObject("debug").has("track")) {
                                     logger.debug("{\"parsedQuery\":" + queryString + ", \"track\":"
                                             + jsonResponse.optJSONObject("debug").optJSONObject("track")
                                             + ", \"timing\":" + timingInfo + ",\"totalNumFound\":"

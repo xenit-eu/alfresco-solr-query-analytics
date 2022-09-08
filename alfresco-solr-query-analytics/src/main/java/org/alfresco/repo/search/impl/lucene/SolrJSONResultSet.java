@@ -120,7 +120,7 @@ public class SolrJSONResultSet implements ResultSet, JSONResult
 
 
      //adding this class variable (on top of the vanilla class) so we can temporarily store the return payload to parse it via our AOP implementation.
-    private JSONObject response;
+    private JSONObject fullResponse;
 
     /**
      * Detached result set based on that provided
@@ -141,9 +141,9 @@ public class SolrJSONResultSet implements ResultSet, JSONResult
             JSONObject responseHeader = json.getJSONObject("responseHeader");
             status = responseHeader.getLong("status");
             queryTime = responseHeader.getLong("QTime");
-
-            //instead of the local "response" variable, this is now the class variable (as opposed to vanilla)
-            response = json.getJSONObject("response");
+            //saving fullResponse as class variable (as opposed to vanilla)
+            fullResponse = json;
+            JSONObject response = json.getJSONObject("response");
             numberFound = response.getLong("numFound");
             start = response.getLong("start");
             Double d = response.getDouble("maxScore");
@@ -829,6 +829,6 @@ public class SolrJSONResultSet implements ResultSet, JSONResult
 
         logger.debug("Entering customized SolrJsonResultSet.class code");
 
-        return response;
+        return fullResponse;
     }
 }
