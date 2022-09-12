@@ -75,32 +75,26 @@ Prerequisites:
         cd integration-tests/src/main/compose/
         docker-compose -f docker-compose-elk.yml up -d
 
-Once elasticsearch container are fully started, run the *post-start.sh* script.
+2. Once elasticsearch container are fully started, run the *post-start.sh* script.
 
         cd elasticsearch
-     	./post-start.sh
+         ./post-start.sh
 
 This script takes care of the index lifetime management for the custom index where logs are being written, also of fields mapping for this index. The name of this index should be the same with the label `eu.xenit.index`.
 In an ansible setup, the post-start.sh will be done via ansible.
 
 
+3. Start alfresco (with version 62) and solr
 
-3. (optional) check alfresco versions
-
-           ./gradlew integration-tests:projects
+           ./gradlew integration-tests:alfresco-enterprise-62:cU
     
 
-4. Start alfresco (with a specific version, eg 62) and solr
-
-           ./gradlew integration-tests:alfresco-enterprise-{version}:cU
-    
-
-3. Trigger some searches
+4. Trigger some searches
 
         cd integration-tests/src/main/compose
         ./send_searches.sh
 	
-4. Access kibana at localhost:5601 (username=elastic,password=changeme)
+5. Access kibana at localhost:5601 (username=elastic,password=changeme)
 
 Use discovery mode and explore using fields like
 
