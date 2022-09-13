@@ -112,19 +112,11 @@ Alfresco is available at http://localhost/alfresco. A finder has been included i
 
 ## Maintenance
 
-Copy bean definition for SolrQueryHTTPClient from the enterprise context and:
-
-* replace the implementation class
-* make sure the shard registry bean being used is search.solrShardRegistry (lowercase)
-* add useSolrDebug property
-* add SolrQuery bean setter
-
+The amp will override the original  **SolrJSONResultSet.class** by being unpacked by the amp in:
+***/usr/local/tomcat/webapps/alfresco/WEB-INF/classes/org/alfresco/repo/search/impl/lucene***
 
 * only logger lines need to be changed, depending on the useSolrDebug variable:
 
-        url.append("&debugQuery=on");
-        ...
-        s_logger.debug("Debug: " + json.get("debug"));
 
 For efficiency, it is possible to only send to ES a subset of the debug information, for example total number of hits, total time elapsed and information per shard.
 

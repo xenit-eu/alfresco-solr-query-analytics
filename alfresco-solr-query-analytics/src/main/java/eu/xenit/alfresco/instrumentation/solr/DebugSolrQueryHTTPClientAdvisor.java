@@ -33,13 +33,13 @@ public class DebugSolrQueryHTTPClientAdvisor {
         //logger.debug("Setting up AOP intercept for SOLR query Analytics");
         final Method debugMethod = ReflectionUtils.findMethod(SolrJSONResultSet.class, "getResponseBodyAsJSONObject");
 
-        if (isUseSolrDebug() && debugMethod != null) {
+        if (debugMethod != null) {
 
             //logger.debug("Solr Debug enabled, activating advisor");
             //We need to add the "0" as first argument or this won't work
             bean.addAdvisor(0, new DefaultPointcutAdvisor(new MethodInterceptor() {
                 public Object invoke(MethodInvocation mi) throws Throwable {
-                    if ("query".equals(mi.getMethod().getName())) {
+                    if ("query".equals(mi.getMethod().getName()) && isUseSolrDebug()) {
                         //logger.debug("Appending debug parameter to query");
                         Object[] arguments = mi.getArguments();
 
