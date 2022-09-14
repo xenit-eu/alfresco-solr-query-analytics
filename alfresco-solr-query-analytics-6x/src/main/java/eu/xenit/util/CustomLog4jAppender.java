@@ -1,10 +1,5 @@
 package eu.xenit.util;
 
-import org.apache.log4j.FileAppender;
-import org.apache.log4j.Layout;
-import org.apache.log4j.helpers.LogLog;
-import org.apache.log4j.spi.LoggingEvent;
-
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
@@ -20,6 +15,10 @@ import java.util.Optional;
 import java.util.TimeZone;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Layout;
+import org.apache.log4j.helpers.LogLog;
+import org.apache.log4j.spi.LoggingEvent;
 
 // https://gist.github.com/hitenpratap/14f7168dc65a7a4b46ce2f7aeda81ab9
 public class CustomLog4jAppender extends FileAppender {
@@ -202,7 +201,8 @@ public class CustomLog4jAppender extends FileAppender {
                     Date date = sdf.parse(datePart);
                     if (date.before(cutoffDate)) {
                         Files.delete(value.toPath());
-                    } else if (getCompressBackups().equalsIgnoreCase("YES") || getCompressBackups().equalsIgnoreCase("TRUE")) {
+                    } else if (getCompressBackups().equalsIgnoreCase("YES") || getCompressBackups().equalsIgnoreCase(
+                            "TRUE")) {
                         zipAndDelete(value);
                     }
                 } catch (Exception pe) {
@@ -217,8 +217,8 @@ public class CustomLog4jAppender extends FileAppender {
         if (!file.getName().endsWith(".zip")) {
             File zipFile = new File(file.getParent(), file.getName() + ".zip");
             try (FileInputStream fis = new FileInputStream(file);
-                 FileOutputStream fos = new FileOutputStream(zipFile);
-                 ZipOutputStream zos = new ZipOutputStream(fos)) {
+                    FileOutputStream fos = new FileOutputStream(zipFile);
+                    ZipOutputStream zos = new ZipOutputStream(fos)) {
                 ZipEntry zipEntry = new ZipEntry(file.getName());
                 zos.putNextEntry(zipEntry);
                 byte[] buffer = new byte[4096];
@@ -237,6 +237,7 @@ public class CustomLog4jAppender extends FileAppender {
     }
 
     class StartsWithFileFilter implements FileFilter {
+
         private String startsWith;
         private boolean inclDirs;
 
@@ -256,6 +257,7 @@ public class CustomLog4jAppender extends FileAppender {
     }
 
     class RollingCalendar extends GregorianCalendar {
+
         private static final long serialVersionUID = -3560331770601814177L;
 
         int type = CustomLog4jAppender.TOP_OF_TROUBLE;
