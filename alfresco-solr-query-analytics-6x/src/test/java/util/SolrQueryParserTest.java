@@ -21,10 +21,10 @@ public class SolrQueryParserTest {
 
     private String createSearchQuery(LinkedHashMap<String, String> propertyMap) {
         String q = "";
-        for (String property : propertyMap.keySet()){
+        for (String property : propertyMap.keySet()) {
             switch (property) {
                 case "FullText":
-                    q +=  propertyMap.get(property);
+                    q += propertyMap.get(property);
                     break;
                 case "AND":
                     q += property;
@@ -36,7 +36,7 @@ public class SolrQueryParserTest {
                     q += property;
                     break;
                 case "TEXT":
-                    q +=  propertyMap.get(property);
+                    q += propertyMap.get(property);
                     propertyMap.put(FULL_TEXT_PROPERTY, propertyMap.get(property));
                     propertyMap.remove("TEXT");
                     break;
@@ -51,12 +51,12 @@ public class SolrQueryParserTest {
 
     private void assertExtraction(LinkedHashMap<String, String> propertyMap, Set<String> extractedProperties) {
         Set<String> formattedPropertySet = new HashSet<>();
-        for (String property : propertyMap.keySet()){
+        for (String property : propertyMap.keySet()) {
             if (shouldBeExtracted(property)) {
                 formattedPropertySet.add(removeLuceneQueryOptions(solrQueryParser.escapeIllegalChars(property)));
             }
         }
-        for (String property : extractedProperties){
+        for (String property : extractedProperties) {
             assertTrue(shouldBeExtracted(property));
         }
         assertEquals(formattedPropertySet, extractedProperties);
@@ -96,98 +96,98 @@ public class SolrQueryParserTest {
 
     @Test
     public void simpleFullTextTest() {
-        propertyMap.put(FULL_TEXT_PROPERTY,"test");
+        propertyMap.put(FULL_TEXT_PROPERTY, "test");
     }
 
     @Test
     public void simplePropertyTest() {
-        propertyMap.put("cm:name","test");
+        propertyMap.put("cm:name", "test");
     }
 
     @Test
     public void simpleFTSandPropertyTest() {
-        propertyMap.put(FULL_TEXT_PROPERTY,"test");
-        propertyMap.put("cm:name","test");
+        propertyMap.put(FULL_TEXT_PROPERTY, "test");
+        propertyMap.put("cm:name", "test");
     }
 
     @Test
     public void simpleFTSandMultiplePropertiesTest() {
-        propertyMap.put(FULL_TEXT_PROPERTY,"test");
-        propertyMap.put("cm:name","test");
-        propertyMap.put("cm:description","test");
+        propertyMap.put(FULL_TEXT_PROPERTY, "test");
+        propertyMap.put("cm:name", "test");
+        propertyMap.put("cm:description", "test");
     }
 
     @Test
     public void simpleExactQueriesTest() {
-        propertyMap.put("cm:name","\"test\"");
-        propertyMap.put("cm:description","\"test  test   test  test     \"");
+        propertyMap.put("cm:name", "\"test\"");
+        propertyMap.put("cm:description", "\"test  test   test  test     \"");
     }
 
     @Test
     public void simpleAndQueryTest() {
-        propertyMap.put("cm:name","test");
-        propertyMap.put("AND","");
-        propertyMap.put("cm:description","test");
+        propertyMap.put("cm:name", "test");
+        propertyMap.put("AND", "");
+        propertyMap.put("cm:description", "test");
     }
 
     @Test
     public void simpleORQueryTest() {
-        propertyMap.put(FULL_TEXT_PROPERTY,"test");
-        propertyMap.put("OR","");
-        propertyMap.put("cm:description","test");
+        propertyMap.put(FULL_TEXT_PROPERTY, "test");
+        propertyMap.put("OR", "");
+        propertyMap.put("cm:description", "test");
     }
 
     @Test
     public void typeQueryTest() {
-        propertyMap.put("TYPE","\"cm:content\"");
+        propertyMap.put("TYPE", "\"cm:content\"");
     }
 
     @Test
     public void textTest() {
-        propertyMap.put("TEXT","\"Full text search\"");
+        propertyMap.put("TEXT", "\"Full text search\"");
     }
 
     @Test
     public void typeVariationQueryTest() {
-        propertyMap.put("+TYPE","\"{http://www.alfresco.org/model/site/1.0}site\"");
+        propertyMap.put("+TYPE", "\"{http://www.alfresco.org/model/site/1.0}site\"");
     }
 
     @Test
     public void lunceneQueryOptionsTest() {
-        propertyMap.put("+cm:name","\" test\"");
-        propertyMap.put("OR","");
-        propertyMap.put("-cm:title","\" test*\"");
+        propertyMap.put("+cm:name", "\" test\"");
+        propertyMap.put("OR", "");
+        propertyMap.put("-cm:title", "\" test*\"");
     }
 
     @Test
     public void typeCombinationQueryTest() {
-        query= "+TYPE:\"{http://www.alfresco.org/model/site/1.0}site\" AND ( cm:name:\" test\" OR  cm:title: (\"test*\" ) OR cm:description:\"test\")";
-        propertyMap.put("+TYPE","\"{http://www.alfresco.org/model/site/1.0}site\"");
-        propertyMap.put("cm:name","\" test\"");
-        propertyMap.put("OR","");
-        propertyMap.put("cm:title","\" test*\"");
-        propertyMap.put("OR","");
-        propertyMap.put("cm:description","\" test*\"");
+        query = "+TYPE:\"{http://www.alfresco.org/model/site/1.0}site\" AND ( cm:name:\" test\" OR  cm:title: (\"test*\" ) OR cm:description:\"test\")";
+        propertyMap.put("+TYPE", "\"{http://www.alfresco.org/model/site/1.0}site\"");
+        propertyMap.put("cm:name", "\" test\"");
+        propertyMap.put("OR", "");
+        propertyMap.put("cm:title", "\" test*\"");
+        propertyMap.put("OR", "");
+        propertyMap.put("cm:description", "\" test*\"");
     }
 
     @Test
     public void fullContentModelURITest() {
-        propertyMap.put("{http://www.alfresco.org/model/content/1.0}created","(\"NOW/DAY-1MONTH\"..\"NOW/DAY+1DAY\" )");
-        propertyMap.put("OR","");
-        propertyMap.put("{http://www.alfresco.org/model/content/1.0}content.size","(\"1048576\"..\"16777216\")");
+        propertyMap.put("{http://www.alfresco.org/model/content/1.0}created", "(\"NOW/DAY-1MONTH\"..\"NOW/DAY+1DAY\" )");
+        propertyMap.put("OR", "");
+        propertyMap.put("{http://www.alfresco.org/model/content/1.0}content.size", "(\"1048576\"..\"16777216\")");
     }
 
     @Test
     public void fullContentModelAndFullTextTest() {
         query = "(test doc ) AND ({http://www.alfresco.org/model/content/1.0}created:(\"NOW/DAY-1MONTH\"..\"NOW/DAY+1DAY\" )";
-        propertyMap.put(FULL_TEXT_PROPERTY,"\" test\"");
-        propertyMap.put("AND","");
-        propertyMap.put("{http://www.alfresco.org/model/content/1.0}created","(\"NOW/DAY-1MONTH\"..\"NOW/DAY+1DAY\" )");
+        propertyMap.put(FULL_TEXT_PROPERTY, "\" test\"");
+        propertyMap.put("AND", "");
+        propertyMap.put("{http://www.alfresco.org/model/content/1.0}created", "(\"NOW/DAY-1MONTH\"..\"NOW/DAY+1DAY\" )");
     }
 
     @Test
     public void pathQueryTest() {
-        propertyMap.put("PATH","/app:company_home/st:sites/cm:test-site//*");
+        propertyMap.put("PATH", "/app:company_home/st:sites/cm:test-site//*");
     }
 
     @Test
@@ -198,9 +198,9 @@ public class SolrQueryParserTest {
     @Test
     public void pathCombinationTest() {
         query = "((PATH:\"/app:company_home/st:sites/cm:test-site//*\" AND {http://www.alfresco.org/model/content/1.0}created:(\"NOW/DAY-1MONTH\"..\"NOW/DAY+1DAY\") AND {http://www.alfresco.org/model/content/1.0}creator:\"admin\") AND TYPE:\"cm:content\"";
-        propertyMap.put("PATH","/app:company_home/st:sites/cm:test-site//*");
-        propertyMap.put("{http://www.alfresco.org/model/content/1.0}created","(\"NOW/DAY-1MONTH\"..\"NOW/DAY+1DAY\" )");
-        propertyMap.put("{http://www.alfresco.org/model/content/1.0}creator","\"admin\"");
+        propertyMap.put("PATH", "/app:company_home/st:sites/cm:test-site//*");
+        propertyMap.put("{http://www.alfresco.org/model/content/1.0}created", "(\"NOW/DAY-1MONTH\"..\"NOW/DAY+1DAY\" )");
+        propertyMap.put("{http://www.alfresco.org/model/content/1.0}creator", "\"admin\"");
         propertyMap.put("TYPE", "\"cm:content\"");
     }
 
@@ -209,8 +209,8 @@ public class SolrQueryParserTest {
         query = "{http://www.alfresco.org/model/content/1.0}creator:\"admin\" " +
                 "AND {http://www.alfresco.org/model/content/1.0}content.mimetype:\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\") " +
                 "AND TYPE:\"cm:content\"";
-        propertyMap.put("{http://www.alfresco.org/model/content/1.0}creator","\"admin\"");
-        propertyMap.put("{http://www.alfresco.org/model/content/1.0}content.mimetype","\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"");
+        propertyMap.put("{http://www.alfresco.org/model/content/1.0}creator", "\"admin\"");
+        propertyMap.put("{http://www.alfresco.org/model/content/1.0}content.mimetype", "\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"");
         propertyMap.put("TYPE", "\"cm:content\"");
     }
 
@@ -232,16 +232,16 @@ public class SolrQueryParserTest {
     @Test
     public void simpleNotQueryTest() {
         query = "TYPE:cm:content AND NOT cm:name: \"test\"";
-        propertyMap.put("TYPE","cm:content");
-        propertyMap.put("AND","");
-        propertyMap.put("NOT","");
+        propertyMap.put("TYPE", "cm:content");
+        propertyMap.put("AND", "");
+        propertyMap.put("NOT", "");
         propertyMap.put("!cm:name", "test");
     }
 
     @Test
     public void specialCaseQueryTest() {
         query = "cm:id:[18 TO 30]";
-        propertyMap.put("cm:id","[18 TO 30]");
+        propertyMap.put("cm:id", "[18 TO 30]");
     }
 
     @Test
@@ -291,35 +291,45 @@ public class SolrQueryParserTest {
                 "OR TYPE:\"{http://www.alfresco.org/model/calendar}ignoreEvent\" " +
                 "OR TYPE:\"{http://www.alfresco.org/model/calendar}calendarEvent\" " +
                 "OR ASPECT:\"{http://www.alfresco.org/model/system/1.0}hidden\"))";
-        propertyMap.put("{http://www.alfresco.org/model/content/1.0}creator","\"test\"");
-        propertyMap.put("TYPE","{http://www.xenit.eu/xenit/model/0.3}project");
-        propertyMap.put(FULL_TEXT_PROPERTY,"\"Test\"");
+        propertyMap.put("{http://www.alfresco.org/model/content/1.0}creator", "\"test\"");
+        propertyMap.put("TYPE", "{http://www.xenit.eu/xenit/model/0.3}project");
+        propertyMap.put(FULL_TEXT_PROPERTY, "\"Test\"");
         propertyMap.put("{http://www.alfresco.org/model/content/1.0}content.mimetype",
                 "\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\"");
     }
 
     @Test
-    public void testShareQuery(){
+    public void testShareQuery() {
         query = "+@cm\\:modified:[2021\\-7\\-27T00\\:00\\:00.000 TO 2021\\-8\\-3T23\\:59\\:59.999] " +
                 "+@cm\\:modifier:\"admin\" +TYPE:\"cm:content\" -TYPE:\"cm:systemfolder\" " +
                 "-TYPE:\"fm:forums\" -TYPE:\"fm:forum\" -TYPE:\"fm:topic\" -TYPE:\"fm:post\" " +
                 "+(TYPE:\"content\" OR TYPE:\"app:filelink\" OR TYPE:\"folder\")";
-        propertyMap.put("cm:modified","[2021\\-7\\-27T00\\:00\\:00.000 TO 2021\\-8\\-3T23\\:59\\:59.999]");
-        propertyMap.put("cm:modifier","\"admin\"");
-        propertyMap.put("TYPE","\"cm:content\"");
+        propertyMap.put("cm:modified", "[2021\\-7\\-27T00\\:00\\:00.000 TO 2021\\-8\\-3T23\\:59\\:59.999]");
+        propertyMap.put("cm:modifier", "\"admin\"");
+        propertyMap.put("TYPE", "\"cm:content\"");
     }
 
     @Test
     public void testLuceneQuery() {
         query = "+@cm\\:modified:[NOW/DAY-7DAYS TO NOW/DAY+1DAY] +TYPE:\"cm:content\"";
-        propertyMap.put("cm:modified","[NOW/DAY-7DAYS TO NOW/DAY+1DAY]");
+        propertyMap.put("cm:modified", "[NOW/DAY-7DAYS TO NOW/DAY+1DAY]");
         propertyMap.put("TYPE", "\"cm:content\"");
     }
 
     @Test
     public void testEscapedQuery() {
         query = "={http:\\/\\/www.alfresco.org\\/model\\/content/1.0}name:\"Out\"";
-        propertyMap.put("{http://www.alfresco.org/model/content/1.0}name","Out");
+        propertyMap.put("{http://www.alfresco.org/model/content/1.0}name", "Out");
     }
 
+    @Test
+    public void testLongQuery() {
+        query = "((={http:\\/\\/www.xenit.eu/model\\/content}claimNumber:\"031379321\"" +
+                " AND ={http:\\/\\/www.xenit.eu\\/model\\/content}hiddenDocument:\"false\") " +
+                "AND TYPE:\"{http:\\/\\/www.xenit.eu\\/model\\/content}root\" " +
+                "AND NOT (TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/content\\/1.0}dictionaryModel\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/datalist\\/1.0}issue\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/datalist\\/1.0}todoList\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/linksmodel\\/1.0}link\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/download\\/1.0}download\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/datalist\\/1.0}issue\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/datalist\\/1.0}dataList\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/datalist\\/1.0}dataListItem\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/content\\/1.0}systemfolder\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/content\\/1.0}rating\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/content\\/1.0}thumbnail\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/content\\/1.0}failedThumbnail\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/bpm\\/1.0}package\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/forum\\/1.0}forum\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/forum\\/1.0}topic\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/forum\\/1.0}post\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/site\\/1.0}site\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/transfer\\/1.0}tempTransferStore\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/transfer\\/1.0}transferReportDest\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/transfer\\/1.0}transferReport\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/transfer\\/1.0}transferLock\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/transfer\\/1.0}transferRecord\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/bpm\\/1.0}workflowDefinition\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/content\\/1.0}savedquery\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/content\\/smartfolder\\/1.0}smartFolderTemplate\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/solrfacet\\/1.0}facetField\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/surf\\/1.0}amdpage\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/calendar}updateEvent\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/calendar}ignoreEvent\" OR TYPE:\"{http:\\/\\/www.alfresco.org\\/model\\/calendar}calendarEvent\" OR ASPECT:\"{http:\\/\\/www.alfresco.org\\/model\\/system\\/1.0}hidden\"))";
+        propertyMap.put("{http:\\/\\/www.xenit.eu/model\\/content}claimNumber", "031379321");
+        propertyMap.put("{http:\\/\\/www.xenit.eu\\/model\\/content}hiddenDocument", "false");
+        propertyMap.put("TYPE", "{http:\\/\\/www.xenit.eu\\/model\\/content}root");
+    }
 }

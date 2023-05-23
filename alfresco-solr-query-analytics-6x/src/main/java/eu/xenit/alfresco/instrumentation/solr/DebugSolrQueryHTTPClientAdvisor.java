@@ -5,6 +5,8 @@ import eu.xenit.util.SolrTimingParser;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Properties;
+import java.io.StringWriter;
+import java.io.PrintWriter;
 import org.alfresco.repo.search.impl.lucene.JSONResult;
 import org.alfresco.repo.search.impl.lucene.SolrJSONResultSet;
 import org.alfresco.service.cmr.search.ResultSet;
@@ -85,8 +87,12 @@ public class DebugSolrQueryHTTPClientAdvisor {
                             }
                         } catch (Throwable e) {
                             String queryString = params.getQuery();
+                            StringWriter sw = new StringWriter();
+                            PrintWriter pw = new PrintWriter(sw);
+                            e.printStackTrace(pw);
+                            String sStackTrace = sw.toString(); // stack trace as a string
                             logger.debug(
-                                    "{\"parsedQuery\":" + queryString + ", \"debugError\":" + e.getMessage() + "}");
+                                    "{\"parsedQuery\":" + queryString + ", \"debugError\":" + DebugSolrQueryHTTPClientAdvisor.this.solrQueryParser.escapeIllegalChars(sStackTrace) + "}");
                         }
 
                         return resultSet;
