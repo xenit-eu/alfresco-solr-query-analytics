@@ -20,8 +20,10 @@ jobs:
           java-version: 11
       - name: Publish
         env:
-          SIGNING_PRIVATE_KEY: ${{ secrets.MAVEN_CENTRAL_GPG_KEY }}
-          SIGNING_PASSWORD: ${{ secrets.MAVEN_CENTRAL_GPG_PASSWORD }}
-          ORG_GRADLE_PROJECT_sonatype_username: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
-          ORG_GRADLE_PROJECT_sonatype_password: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          XENIT_ARTIFACTORY_USERNAME: ${{ secrets.XENIT_ARTIFACTORY_USERNAME }}
+          XENIT_ARTIFACTORY_PASSWORD: ${{ secrets.XENIT_ARTIFACTORY_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.MAVEN_CENTRAL_GPG_KEY }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.MAVEN_CENTRAL_GPG_PASSWORD }}
+          ORG_GRADLE_PROJECT_sonatype_username: ${{ secrets.SONATYPE_S01_USERNAME }}
+          ORG_GRADLE_PROJECT_sonatype_password: ${{ secrets.SONATYPE_S01_PASSWORD }}
         run: ./gradlew publish --info
