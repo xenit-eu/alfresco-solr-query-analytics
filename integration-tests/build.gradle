@@ -1,6 +1,6 @@
 plugins {
-    id 'eu.xenit.docker-alfresco' version '5.3.1' apply false
-    id 'eu.xenit.docker-compose' version '5.2.0' apply false    
+    id 'eu.xenit.docker-alfresco' version '5.4.0' apply false
+    id 'eu.xenit.docker-compose' version '5.4.0' apply false
 }
 
 subprojects {
@@ -36,7 +36,7 @@ subprojects {
 
 
     dockerCompose {
-        dockerComposeWorkingDirectory = "${project.parent.projectDir}/src/main/compose/"
+        dockerComposeWorkingDirectory = project.file("${project.parent.projectDir}/src/main/compose/")
 
         useComposeFiles = ["docker-compose.yml",
                            "docker-compose-sharded-solr.yml"]

@@ -1,5 +1,5 @@
 plugins {
-    id "be.vbgn.ci-detect" version "0.5.0"    
+    id "be.vbgn.ci-detect" version "0.5.0"
 }
 
 subprojects {
@@ -13,6 +13,8 @@ subprojects {
     // for a non-dotted-equivalent
     copyPropertyValueIfExists('alfresco_nexus_username', 'org.alfresco.maven.nexus.username')
     copyPropertyValueIfExists('alfresco_nexus_password', 'org.alfresco.maven.nexus.password')
+    copyPropertyValueIfExists('cloudsmith_username', 'eu.xenit.cloudsmith.username')
+    copyPropertyValueIfExists('cloudsmith_password', 'eu.xenit.cloudsmith.password')
 
 
     repositories {
@@ -20,17 +22,17 @@ subprojects {
         maven {
             url 'https://artifacts.alfresco.com/nexus/content/repositories/public/'
         }
-	maven {
+	    maven {
             url 'https://artifacts.alfresco.com/nexus/content/groups/private'
             credentials {
                 username project.property('org.alfresco.maven.nexus.username')
                 password project.property('org.alfresco.maven.nexus.password')
             }
         }
-	// for alfresco's dependency org.vaadin.addons:dcharts-widget
-	maven {
-	   url 'https://maven.vaadin.com/vaadin-addons'
-	}
+	    // for alfresco's dependency org.vaadin.addons:dcharts-widget
+	    maven {
+	        url 'https://maven.vaadin.com/vaadin-addons'
+	    }
     }
 }
 
