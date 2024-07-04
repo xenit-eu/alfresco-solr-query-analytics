@@ -20,7 +20,8 @@ subprojects {
         baseAlfrescoWar 'org.alfresco:content-services@war'
 
         alfrescoAmp "${apixImplAmpVersion}"
-        alfrescoAmp "${dynamicExtensionsAmpVersion}"
+        alfrescoSM "com.gradecak.alfresco-mvc:alfresco-mvc-rest:8.0.0"
+        alfrescoSM "com.gradecak.alfresco-mvc:alfresco-mvc-aop:8.0.0"
         alfrescoAmp "eu.xenit.alfresco:alfresco-hotfix-MNT-20557:1.0.2@amp"
         alfrescoAmp "${care4alfAmpVersion}"
 
@@ -29,7 +30,7 @@ subprojects {
     dockerBuild	{
       alfresco {    
         def namespace = (edition=="community"?"public":"alfresco-${edition}")
-        baseImage = "hub.xenit.eu/${namespace}/alfresco-${edition}:${alfrescoVersion}"
+        baseImage = "private.docker.xenit.eu/alfresco-enterprise/alfresco-repository-${edition}:${alfrescoVersion}"
         leanImage = true
       }
     }
