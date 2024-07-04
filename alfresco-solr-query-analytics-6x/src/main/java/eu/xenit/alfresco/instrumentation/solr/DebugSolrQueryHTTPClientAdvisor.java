@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.io.StringWriter;
 import java.io.PrintWriter;
-import org.alfresco.repo.search.impl.lucene.JSONResult;
-import org.alfresco.repo.search.impl.lucene.SolrJSONResultSet;
+import org.alfresco.repo.search.SearchEngineResultSet;
+import org.alfresco.repo.search.impl.solr.SolrJSONResultSet;
 import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchParameters;
 import org.aopalliance.intercept.MethodInterceptor;
@@ -58,7 +58,7 @@ public class DebugSolrQueryHTTPClientAdvisor {
                             JSONObject queryString = DebugSolrQueryHTTPClientAdvisor.this.solrQueryParser
                                     .formatToQueryJson(params.getQuery());
 
-                            if (resultSet instanceof JSONResult) {
+                            if (resultSet instanceof SearchEngineResultSet) {
                                 JSONObject timingJson = jsonResponse.optJSONObject("debug").optJSONObject("timing");
                                 JSONObject timingInfo = SolrTimingParser.transformTimingJson(timingJson);
                                 if (jsonResponse.optJSONObject("debug").has("track")) {
@@ -66,11 +66,11 @@ public class DebugSolrQueryHTTPClientAdvisor {
                                             + jsonResponse.optJSONObject("debug").optJSONObject("track")
                                             + ", \"timing\":" + timingInfo + ",\"totalNumFound\":"
                                             + resultSet.getNumberFound() + ",\"totalElapsedTime\":"
-                                            + ((JSONResult) resultSet).getQueryTime() + "}");
+                                            + ((SearchEngineResultSet) resultSet).getQueryTime() + "}");
                                 } else {
                                     logger.debug("{\"parsedQuery\":" + queryString + ", \"timing\":" + timingInfo
                                             + ",\"totalNumFound\":" + resultSet.getNumberFound()
-                                            + ",\"totalElapsedTime\":" + ((JSONResult) resultSet).getQueryTime() + "}");
+                                            + ",\"totalElapsedTime\":" + ((SearchEngineResultSet) resultSet).getQueryTime() + "}");
                                 }
                             } else {
                                 JSONObject timingJson = jsonResponse.optJSONObject("debug").optJSONObject("timing");
