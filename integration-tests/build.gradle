@@ -18,20 +18,19 @@ subprojects {
         //starting from the 5.3.1 plugin, the platform command below will find your matching base-war
         baseAlfrescoWar platform("org.alfresco:acs-packaging:${alfrescoVersion}")
         baseAlfrescoWar 'org.alfresco:content-services@war'
+        alfrescoSM(group: 'org.postgresql', name: 'postgresql', version: '42.6.0')
 
         alfrescoAmp "${apixImplAmpVersion}"
-        alfrescoSM "com.gradecak.alfresco-mvc:alfresco-mvc-rest:8.0.0"
-        alfrescoSM "com.gradecak.alfresco-mvc:alfresco-mvc-aop:8.0.0"
+        alfrescoSM "com.gradecak.alfresco-mvc:alfresco-mvc-rest:${mvcVersion}"
+        alfrescoSM "com.gradecak.alfresco-mvc:alfresco-mvc-aop:${mvcVersion}"
         alfrescoAmp "eu.xenit.alfresco:alfresco-hotfix-MNT-20557:1.0.2@amp"
-        alfrescoAmp "${care4alfAmpVersion}"
+        alfrescoAmp "org.orderofthebee.support-tools:support-tools-repo:1.2.2.0:amp@amp"
 
     }
 
     dockerBuild	{
-      alfresco {    
-        def namespace = (edition=="community"?"public":"alfresco-${edition}")
-        baseImage = "private.docker.xenit.eu/alfresco-enterprise/alfresco-repository-${edition}:${alfrescoVersion}"
-        leanImage = true
+      alfresco {
+        baseImage = "docker.io/xenit/alfresco-repository-skeleton:7.4"
       }
     }
 

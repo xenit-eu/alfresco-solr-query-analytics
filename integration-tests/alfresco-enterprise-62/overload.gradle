@@ -3,7 +3,6 @@ ext {
     alfrescoVersionShort = '74'
     alfrescoArtifactId = 'content-services'
 
-    care4alfAmpVersion = 'eu.xenit.care4alf:care4alf-6x:2.4.0@amp'
-    dynamicExtensionsAmpVersion = 'eu.xenit:alfresco-dynamic-extensions-repo-62:2.1.1@amp'
+    mvcVersion = '8.0.0'
     apixImplAmpVersion = 'eu.xenit.alfred.api:alfred-api-74:5.0.3@amp'
 }
