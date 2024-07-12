@@ -20,7 +20,7 @@ services:
     - DEBUG=true
  #   - GLOBAL_solr.useDebug=false
     volumes:
-    - logs:/usr/local/tomcat/logs 
+    - logs:/usr/local/tomcat/temp
     ports:
     - 8080:8080
     - 8000:8000
@@ -30,12 +30,12 @@ services:
 
   solrlogs:
     image: busybox
-    command: [/bin/sh, -c, 'sleep 30 ; tail -n+1 -F /usr/local/tomcat/logs/solrquery.log']
+    command: [/bin/sh, -c, 'sleep 30 ; tail -n+1 -F /usr/local/tomcat/temp/solrquery.log']
     container_name: solrlogs
     depends_on:
       - alfresco
     volumes:
-      - logs:/usr/local/tomcat/logs
+      - logs:/usr/local/tomcat/temp
     labels:
     - co.elastic.logs/module=json-alfresco
     - eu.xenit.index=solrlogs
