@@ -2,9 +2,9 @@ plugins {
     id "eu.xenit.enterprise-conventions.oss" version "0.5.1"
 }
 
-include 'alfresco-solr-query-analytics-6x'
+include 'alfresco-solr-query-analytics'
 
 include ':integration-tests'
-["62"].each { version ->
+["74"].each { version ->
     include ":integration-tests:alfresco-enterprise-${version}"
 }
