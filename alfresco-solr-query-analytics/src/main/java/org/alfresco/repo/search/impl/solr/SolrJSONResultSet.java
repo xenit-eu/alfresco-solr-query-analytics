@@ -830,7 +830,7 @@ public class SolrJSONResultSet implements SearchEngineResultSet {
     /**
      * This is specially crafted function added onto the original class.
      * This function is needed to retrieve the JSON (debug) payload for analytics
-     * We will use AOP to access this functionality, please see {@link DebugSolrQueryHTTPClientAdvisor }  for the execution.
+     * We will use AOP to access this functionality, please see {@link eu.xenit.alfresco.instrumentation.solr.DebugSolrQueryHTTPClientAdvisor }  for the execution.
      * This class will overtake the original SolrJSONResultSet on the classpath, extreme caution is warranted when changing versions,
      * As we cannot predict changes in the original file.
      */
