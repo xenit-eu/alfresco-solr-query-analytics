@@ -4,6 +4,7 @@ apply plugin: 'signing'
 publishing {
     publications {
         library(MavenPublication) {
+            artifactId = "alfresco-solr-query-analytics-74"
             from components.java
             artifact tasks.amp
         }
