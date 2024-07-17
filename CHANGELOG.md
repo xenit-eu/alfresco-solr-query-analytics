@@ -3,6 +3,9 @@ title: Changelog - Alfresco Solr Query Analytics
 
 # Alfresco Solr Query Analytics Changelog
 
+## v2.0.0 - 17-07-2024
+* [ETHALFOS24-42] Update for Alfresco version 7.4.1.3
+
 ## v1.0.0 - 14-09-2022
 * [ALFREDOPS-813] Switched from bean-injection to AOP implementation
 
