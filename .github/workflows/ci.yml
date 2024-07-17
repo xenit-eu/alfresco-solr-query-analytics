@@ -6,6 +6,8 @@ on:
 env:
   ORG_GRADLE_PROJECT_alfresco_nexus_username: ${{ secrets.ALFRESCO_NEXUS_USERNAME }}
   ORG_GRADLE_PROJECT_alfresco_nexus_password: ${{ secrets.ALFRESCO_NEXUS_PASSWORD }}
+  ORG_GRADLE_PROJECT_cloudsmith_user: ${{ secrets.CLOUDSMITH_USER }}
+  ORG_GRADLE_PROJECT_cloudsmith_password: ${{ secrets.CLOUDSMITH_APIKEY }}
   
 jobs:
   publish:
@@ -20,8 +22,6 @@ jobs:
           java-version: 11
       - name: Publish
         env:
-          XENIT_ARTIFACTORY_USERNAME: ${{ secrets.XENIT_ARTIFACTORY_USERNAME }}
-          XENIT_ARTIFACTORY_PASSWORD: ${{ secrets.XENIT_ARTIFACTORY_PASSWORD }}
           SIGNING_PRIVATE_KEY: ${{ secrets.MAVEN_CENTRAL_GPG_KEY }}
           SIGNING_PASSWORD: ${{ secrets.MAVEN_CENTRAL_GPG_PASSWORD }}
           ORG_GRADLE_PROJECT_sonatype_username: ${{ secrets.SONATYPE_S01_USERNAME }}
