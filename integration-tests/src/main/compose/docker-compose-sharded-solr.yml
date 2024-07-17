@@ -5,10 +5,10 @@ services:
     environment:
       - INDEX=solr6
       - ENABLE_CLUSTERING=true
-      - DYNAMIC_SHARD_REGISTRATION=true
+      - GLOBAL_solr.useDynamicShardRegistration=true
 
   shard1:
-    image: hub.xenit.eu/alfresco-enterprise/alfresco-solr6:1.3.0.6
+    image: private.docker.xenit.eu/alfresco-enterprise/alfresco-solr6-xenit:2.0.8.2
     container_name: shard1
     ports:
       - 8081:8080
@@ -16,7 +16,8 @@ services:
     environment:
       - JAVA_XMX=1024M
       - SOLR_HOST=shard1
-      - ALFRESCO_SSL=none
+      - ALFRESCO_SSL=secret
+      - ALFRESCO_SECRET=shared-secret
       - CORES_TO_TRACK=alfresco
       - CORES_ALFRESCO=shard1
       - GLOBAL_ALL_shard.method=DB_ID
@@ -24,7 +25,7 @@ services:
       - GLOBAL_shard1_shard.instance=0
 
   shard2:
-    image: hub.xenit.eu/alfresco-enterprise/alfresco-solr6:1.3.0.6
+    image: private.docker.xenit.eu/alfresco-enterprise/alfresco-solr6-xenit:2.0.8.2
     container_name: shard2
     ports:
       - 8082:8080
@@ -32,7 +33,8 @@ services:
     environment:
       - JAVA_XMX=1024M
       - SOLR_HOST=shard2
-      - ALFRESCO_SSL=none
+      - ALFRESCO_SSL=secret
+      - ALFRESCO_SECRET=shared-secret
       - CORES_TO_TRACK=alfresco
       - CORES_ALFRESCO=shard2
       - GLOBAL_ALL_shard.method=DB_ID

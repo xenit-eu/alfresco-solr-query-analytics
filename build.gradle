@@ -1,18 +1,20 @@
 plugins {
-    id "be.vbgn.ci-detect" version "0.5.0"    
+    id "be.vbgn.ci-detect" version "0.5.0"
 }
 
 subprojects {
     description = "Alfresco solr query analytics"
 
     group = 'eu.xenit.alfresco'
-    version = '1.0.1' + getVersionQualifier(ci.branch ?: 'local')
+    version = '2.0.0' + getVersionQualifier(ci.branch ?: 'local')
     ext.isReleaseVersion = !(version.endsWith("SNAPSHOT"))
 
     // It is not possible to set properties with a dot via GitHub Actions env variables, therefore we introduce support
     // for a non-dotted-equivalent
     copyPropertyValueIfExists('alfresco_nexus_username', 'org.alfresco.maven.nexus.username')
     copyPropertyValueIfExists('alfresco_nexus_password', 'org.alfresco.maven.nexus.password')
+    copyPropertyValueIfExists('cloudsmith_username', 'eu.xenit.cloudsmith.username')
+    copyPropertyValueIfExists('cloudsmith_password', 'eu.xenit.cloudsmith.password')
 
 
     repositories {
@@ -20,17 +22,17 @@ subprojects {
         maven {
             url 'https://artifacts.alfresco.com/nexus/content/repositories/public/'
         }
-	maven {
+	    maven {
             url 'https://artifacts.alfresco.com/nexus/content/groups/private'
             credentials {
                 username project.property('org.alfresco.maven.nexus.username')
                 password project.property('org.alfresco.maven.nexus.password')
             }
         }
-	// for alfresco's dependency org.vaadin.addons:dcharts-widget
-	maven {
-	   url 'https://maven.vaadin.com/vaadin-addons'
-	}
+	    // for alfresco's dependency org.vaadin.addons:dcharts-widget
+	    maven {
+	        url 'https://maven.vaadin.com/vaadin-addons'
+	    }
     }
 }
 

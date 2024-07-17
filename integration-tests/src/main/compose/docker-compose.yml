@@ -2,7 +2,7 @@ version: '2.2'
 
 services:
   proxy:
-    image: hub.xenit.eu/public/haproxy-alfresco:0.0.2
+    image: private.docker.xenit.eu/customer/xenit/haproxy-alfresco:0.1.0
     container_name: proxy
     environment:
     - HAPROXY_INCLUDE_FINDER=true
@@ -14,33 +14,34 @@ services:
     image: ${DOCKER_IMAGE}
     container_name: alfresco    
     environment:
-    - SOLR_SSL=none
+    - SOLR_SSL=secret
+    - GLOBAL_solr.sharedSecret=shared-secret
     - GLOBAL_local.transform.service.enabled=false
     - DEBUG=true
  #   - GLOBAL_solr.useDebug=false
     volumes:
-    - logs:/usr/local/tomcat/logs 
+    - logs:/usr/local/tomcat/temp
     ports:
     - 8080:8080
     - 8000:8000
   finder:
-    image: hub.xenit.eu/alfred-finder/finder-app:2.2.0-rc.9
+    image: private.docker.xenit.eu/alfred-finder/finder-app:2.15.1
     container_name: finder
 
   solrlogs:
     image: busybox
-    command: [/bin/sh, -c, 'sleep 30 ; tail -n+1 -F /usr/local/tomcat/logs/solrquery.log']
+    command: [/bin/sh, -c, 'sleep 30 ; tail -n+1 -F /usr/local/tomcat/temp/solrquery.log']
     container_name: solrlogs
     depends_on:
       - alfresco
     volumes:
-      - logs:/usr/local/tomcat/logs
+      - logs:/usr/local/tomcat/temp
     labels:
     - co.elastic.logs/module=json-alfresco
     - eu.xenit.index=solrlogs
 
   postgresql:
-    image: hub.xenit.eu/public/postgres
+    image: docker.io/postgres:14
     container_name: postgresql
     environment:
       - POSTGRES_USER=alfresco

@@ -4,13 +4,14 @@ apply plugin: 'signing'
 publishing {
     publications {
         library(MavenPublication) {
+            artifactId = "alfresco-solr-query-analytics-74"
             from components.java
             artifact tasks.amp
         }
         all {
             pom {
                     url = 'https:/github.com/xenit-eu/alfresco-solr-query-analytics'
-                    name = "alfresco-solr-query-analytics-6x"
+                    name = "alfresco-solr-query-analytics-74"
                     description = "Creates an amp + jar for having Alfresco log more information from solr"
 
                     scm {

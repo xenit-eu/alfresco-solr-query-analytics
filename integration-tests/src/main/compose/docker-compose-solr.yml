@@ -2,7 +2,7 @@ version: '2.2'
 
 services:
   solr:
-    image: hub.xenit.eu/alfresco-enterprise/alfresco-solr6:1.4
+    image: private.docker.xenit.eu/alfresco-enterprise/alfresco-solr6-xenit:2.0.8.2
     container_name: solr
     volumes:
       - solr:/opt/alfresco/alf_data
@@ -12,7 +12,8 @@ services:
       - JAVA_XMS=512M
       - JAVA_XMX=2048M
       - SHARDING=false
-      - ALFRESCO_SSL=none
+      - ALFRESCO_SSL=secret
+      - ALFRESCO_SECRET=shared-secret
 
 volumes:
   solr:

@@ -4,7 +4,7 @@ This module builds an Alfresco amp which logs more information for a solr query.
 
 The functionality can be controlled with the boolean parameter *solr.useDebug=true*.
 
-Tested and tailor-made for alfrescoVersion = **'6.2.2.19'**.
+Tested and tailor-made for alfrescoVersion = **'7.4.1.3'**.
 
 **warning**
 Using this amp for any other version as specified above can have unforeseen consequences.
@@ -84,9 +84,9 @@ This script takes care of the index lifetime management for the custom index whe
 In an ansible setup, the post-start.sh will be done via ansible.
 
 
-3. Start alfresco (with version 62) and solr
+3. Start alfresco (with version 74) and solr
 
-           ./gradlew integration-tests:alfresco-enterprise-62:cU
+           ./gradlew integration-tests:alfresco-enterprise-74:cU
     
 
 4. Trigger some searches
