@@ -1,6 +1,6 @@
 # Alfresco Solr Query Analytics Changelog
 
-## v2.0.1 - 23-07-2024
+## v2.0.1/2 - 23-07-2024
 * [ETHALFOS24-54] Fixed bug that triggered ACS 7.4.x to load two different Log4J2 versions
 
 ## v2.0.0 - 17-07-2024
