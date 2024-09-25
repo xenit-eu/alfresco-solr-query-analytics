@@ -2,7 +2,7 @@ subprojects {
     description = "Alfresco solr query analytics"
 
     group = 'eu.xenit.alfresco'
-    version = version = '2.0.2' + getVersionQualifier()
+    version = '2.0.2' + getVersionQualifier()
     ext.isReleaseVersion = !(version.endsWith("SNAPSHOT"))
 
     // It is not possible to set properties with a dot via GitHub Actions env variables, therefore we introduce support

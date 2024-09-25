@@ -21,6 +21,15 @@ test {
     useJUnitPlatform()
 }
 
+sourceSets {
+    main {
+        amp {
+            // add compiled classes to amp so the original alfresco class is overwritten
+            config.srcDir(compileJava.destinationDirectory)
+        }
+    }
+}
+
 java {
     withJavadocJar()
     withSourcesJar()
