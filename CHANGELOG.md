@@ -1,5 +1,12 @@
 # Alfresco Solr Query Analytics Changelog
 
+## Unreleased
+
+## v2.0.3 - 26-09-2024
+
+### Fixed
+* [ETHALFOS24-82] Fix including compiled classes in amp for override
+
 ## v2.0.1/2 - 23-07-2024
 * [ETHALFOS24-54] Fixed bug that triggered ACS 7.4.x to load two different Log4J2 versions
 
