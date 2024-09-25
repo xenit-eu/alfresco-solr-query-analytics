@@ -21,7 +21,7 @@ We have to note that we are overriding the *SolrJSONResultSet.class* file with o
 Before intercepting the query method, we will check if this function exists. In the build.gradle you can find the *sourceSets* directive that will copy our class to the classes directory in tomcat, effectively overriding the existing one.
 You can find the overriding class here inside the running alfresco container:
 
-***/usr/local/tomcat/webapps/alfresco/WEB-INF/classes/org/alfresco/repo/search/impl/lucene***
+***/usr/local/tomcat/webapps/alfresco/WEB-INF/classes/org/alfresco/repo/search/impl/solr***
 
 The risk exists in the fact that, when we upgrade alfresco, we no longer know if the copy we took of *SolrJSONResultSet.class* to add our *getResponseBodyAsJSONObject* function to is still correct. This can lead to very hard to troubleshoot issues like methodDoesNotExist
 
